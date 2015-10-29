@@ -129,7 +129,7 @@ form:
         letter: Letter
         tabloid: Tabloid
       help: "Set paper size to: A4, Letter, etc."
-        
+
     title:
       type: toggle
       label: Document Title
@@ -150,3 +150,14 @@ form:
       default: 1
       validate:
         type: number
+
+    built_in_css:
+      type: toggle
+      label: Built In CSS
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool

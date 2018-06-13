@@ -201,9 +201,9 @@ class SnappyManager
             }
             $page_children = $page->evaluate([$my_path => $where ]);
             $collection = $page_children;
-            if( $current_theme != 'learn2' && $current_theme != 'learn3' ){
+            /*if( $current_theme != 'learn2' && $current_theme != 'learn3' ){
                 $collection = $page_children->order('date', 'desc');
-            }
+            }*/ /* evaluate */
 
             foreach ($collection as $page) {
                 $parameters['breadcrumbs']  = $this->get_crumbs( $page );

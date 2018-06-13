@@ -1,3 +1,9 @@
+# v1.6.1
+## mm/dd/2018
+
+1. [](#bugfix)
+    * Pages are not ordered [#30](https://github.com/iusvar/grav-plugin-snappygrav/issues/30)
+
 # v1.6.0
 ## 12/21/2017
 

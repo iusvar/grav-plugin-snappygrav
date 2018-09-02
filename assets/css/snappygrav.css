@@ -64,7 +64,7 @@ input:disabled+label{
 
 
 
-
+/*
 hr {
     margin: 0rem 0;
     border-bottom: 1px solid #F0F2F4;
@@ -87,3 +87,4 @@ input[type="text"] .disabled {
     pointer-events:none;
     opacity:0.6;
 }
+*/

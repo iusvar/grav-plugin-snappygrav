@@ -1,3 +1,9 @@
+# v1.6.2
+## 09/03/2018
+
+1. [](#bugfix)
+    * Search text not aligned with learn2 theme if snappygrav plugin is enabled [#32](https://github.com/iusvar/grav-plugin-snappygrav/issues/32)
+
 # v1.6.1
 ## 06/13/2018
 

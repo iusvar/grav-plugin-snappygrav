@@ -1,6 +1,9 @@
-# v1.6.3
+# v1.7.0
 ## 09/04/2018
 
+1. [](#new)
+    * Added h4cc/wkhtmltopdf-amd64 library after suggestion - Make amd64 default [#33](https://github.com/iusvar/grav-plugin-snappygrav/issues/33)
+    * Updated h4cc/wkhtmltopdf-i386 to 0.12.4
 1. [](#bugfix)
     * Restored Markdown Info [#34](https://github.com/iusvar/grav-plugin-snappygrav/issues/34)
 

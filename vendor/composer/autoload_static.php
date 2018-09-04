@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitc561aa109b05a8bd198b12e0bab29c5d
 {
     public static $prefixLengthsPsr4 = array (
+        'h' => 
+        array (
+            'h4cc\\WKHTMLToPDF\\' => 17,
+        ),
         'S' => 
         array (
             'Symfony\\Component\\Process\\' => 26,
@@ -14,6 +18,10 @@ class ComposerStaticInitc561aa109b05a8bd198b12e0bab29c5d
     );
 
     public static $prefixDirsPsr4 = array (
+        'h4cc\\WKHTMLToPDF\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/h4cc/wkhtmltopdf-amd64',
+        ),
         'Symfony\\Component\\Process\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/process',

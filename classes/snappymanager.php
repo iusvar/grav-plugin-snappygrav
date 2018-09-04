@@ -276,7 +276,7 @@ class SnappyManager
             echo '<script type="text/javascript">alert("'.$message.'");</script>';
             break;
         }*/
-        
+
         $snappy = new \Knp\Snappy\Pdf( $wk_path );
         
         //It takes some parameters from snappygrav.yaml file

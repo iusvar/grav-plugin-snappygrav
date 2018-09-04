@@ -5,6 +5,7 @@ wk_absolute_pos: false          # True meaning under the plugin, fake under the 
 wk_path: vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386                          # Path of the wkhtmltopdf program
 default_type: pdf               # Preferred document format.
 slug_blog: blog                 # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
+set_time_limit: 60              # Limits the maximum execution time
 preface_title: true             # When true prints title (default = false)
 preface_author: true            # When true prints author (default = false)
 preface_date: true              # When true prints date (default = false)

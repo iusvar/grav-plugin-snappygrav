@@ -73,6 +73,16 @@ form:
       validate:
         type: string
 
+    set_time_limit:
+      type: text
+      size: x-small
+      label: PLUGIN_SNAPPYGRAV.SET_TIME_LIMIT
+      help: PLUGIN_SNAPPYGRAV.SET_TIME_LIMIT_HELP
+      append: sec
+      default: 60
+      validate:
+        type: number
+
     wkhtmltopdf:
       type: section
       title: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF

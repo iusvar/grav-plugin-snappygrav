@@ -101,3 +101,5 @@ PLUGIN_SNAPPYGRAV:
   ZOOM_FACTOR_HELP: Use this zoom factor (default 1)
   PRINT_MEDIA_TYPE: Print Media Type
   PRINT_MEDIA_TYPE_HELP: Use print media-type instead of screen (default). The snappygrav/assets/css/ directory contains the paper.css file where you can enter the properties of the elements based on the @media rule you want.
+  SET_TIME_LIMIT: Set Time Limit
+  SET_TIME_LIMIT_HELP: Limits the maximum execution time

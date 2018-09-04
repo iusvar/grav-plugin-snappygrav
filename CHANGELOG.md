@@ -1,6 +1,8 @@
 # v1.6.2
-## 09/03/2018
+## 09/04/2018
 
+1. [](#new)
+    * Added settings for set_time_limit. 60 sec timeout [#25](https://github.com/iusvar/grav-plugin-snappygrav/issues/25)
 1. [](#bugfix)
     * Search text not aligned with learn2 theme if snappygrav plugin is enabled [#32](https://github.com/iusvar/grav-plugin-snappygrav/issues/32)
 

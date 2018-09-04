@@ -30,8 +30,10 @@ class SnappyGravPlugin extends Plugin
     public function setting()
     {
         //ini_set('xdebug.max_nesting_level', 512);
-        //set_time_limit(120);
-        
+
+        $set_time_limit = $this->config->get('plugins.snappygrav.set_time_limit');
+        set_time_limit($set_time_limit);
+
         require_once __DIR__ . '/classes/snappymanager.php';
         
         $this->lang = $this->grav['language'];
@@ -312,7 +314,7 @@ class SnappyGravPlugin extends Plugin
                                             }
                                         }).fail(function(jqXHR, textStatus, errorMsg){
                                             $.alert({
-                                                title: "Alert!4",
+                                                title: "Error 315",
                                                 content: errorMsg,
                                             });
                                         }).always(function(){

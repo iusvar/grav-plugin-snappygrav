@@ -1,3 +1,9 @@
+# v1.6.3
+## 09/04/2018
+
+1. [](#bugfix)
+    * Restored Markdown Info [#34](https://github.com/iusvar/grav-plugin-snappygrav/issues/34)
+
 # v1.6.2
 ## 09/04/2018
 

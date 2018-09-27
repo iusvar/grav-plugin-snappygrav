@@ -30,11 +30,11 @@ PLUGIN_SNAPPYGRAV:
   BREADCRUMBS_ENABLED_HELP: Enables the display of crumbs.
   BREADCRUMBS_LINK: Link
   BREADCRUMBS_LINK_HELP: Every single crumb links to the original online page.
-  BREADCRUMBS_CURRENT: Current
-  BREADCRUMBS_CURRENT_HELP: It also shows the crumb of the current document, that is, the last crumb.
   BRANCH: Branch
   BRANCH_ENABLED: Top-Down Status
   BRANCH_ENABLED_HELP: Adds all descending pages from the current page. The selection is made from just the top down.
+  PAGE_BREAK: Page Break
+  PAGE_BREAK_HELP: Adds a page-break before a page
   JQUERY_CONFIRM: jQuery Confirm v3
   THEME: Theme
   LIGHT: Light

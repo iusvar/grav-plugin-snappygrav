@@ -31,11 +31,11 @@ PLUGIN_SNAPPYGRAV:
   BREADCRUMBS_HELP: Stampa il percorso in testa al documento
   BREADCRUMBS_LINK: Collegamento breadcrumbs
   BREADCRUMBS_LINK_HELP: Ogni singola posizione si collega alla pagina online originale.
-  BREADCRUMBS_CURRENT: Attuale breadcrumbs
-  BREADCRUMBS_CURRENT_HELP: Stampa anche la posizione corrente
   BRANCH: Ramo
   BRANCH_ENABLED: Stato top-down
   BRANCH_ENABLED_HELP: Aggiunge tutte le pagine discendenti dalla pagina corrente. La selezione viene effettuata solo dall'alto verso il basso.
+  PAGE_BREAK: Interruzione di pagina
+  PAGE_BREAK_HELP: Aggiunge un'interruzione di pagina prima di una pagina
   JQUERY_CONFIRM: jQuery Confirm v3
   THEME: Tema
   LIGHT: Light

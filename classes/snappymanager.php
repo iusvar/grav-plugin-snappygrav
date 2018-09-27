@@ -194,6 +194,9 @@ class SnappyManager
                     $where = DS;
                     $my_path='@root.descendants'; //see https://learn.getgrav.org/content/collections
                     break;
+                case 'learn2-git-sync':
+                    $where = DS;
+                    $my_path='@root.descendants';
                 default:
                     $where = DS;
                     $my_path='@root.descendants';
@@ -206,6 +209,7 @@ class SnappyManager
             }*/ /* evaluate */
 
             foreach ($collection as $page) {
+              
                 $parameters['breadcrumbs']  = $this->get_crumbs( $page );
                 $parameters['branch']       = ($branch == 'yes' ? true : false );
                 $temp_html = $twig->processTemplate('snappygrav.html.twig', ['page' => $page, 'parameters' => $parameters]);

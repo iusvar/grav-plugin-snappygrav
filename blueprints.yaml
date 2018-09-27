@@ -1,5 +1,5 @@
 name: SnappyGrav
-version: 1.7.0
+version: 1.8.0
 description: Save a page, branch or all website in PDF format
 icon: file-pdf-o
 author:
@@ -116,7 +116,7 @@ form:
       type: section
       title: PLUGIN_SNAPPYGRAV.PREFACE
       underline: false
-      
+
     preface_title:
       type: toggle
       label: PLUGIN_SNAPPYGRAV.PREFACE_TITLE
@@ -191,18 +191,6 @@ form:
       validate:
         type: bool
 
-    breadcrumbs_current:
-      type: toggle
-      label: PLUGIN_SNAPPYGRAV.BREADCRUMBS_CURRENT
-      help: PLUGIN_SNAPPYGRAV.BREADCRUMBS_CURRENT_HELP
-      highlight: 1
-      default: 0
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-
     branch:
       type: section
       title: PLUGIN_SNAPPYGRAV.BRANCH
@@ -212,6 +200,18 @@ form:
       type: toggle
       label: PLUGIN_SNAPPYGRAV.BRANCH_ENABLED
       help: PLUGIN_SNAPPYGRAV.BRANCH_ENABLED_HELP
+      highlight: 0
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    page_break:
+      type: toggle
+      label: PLUGIN_SNAPPYGRAV.PAGE_BREAK
+      help: PLUGIN_SNAPPYGRAV.PAGE_BREAK_HELP
       highlight: 0
       default: 0
       options:

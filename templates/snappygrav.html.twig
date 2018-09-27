@@ -1,63 +1,84 @@
 {% extends 'partials/snappy-base.html.twig' %}
 
-{% set bread    = config.plugins.snappygrav.breadcrumbs %}
-{% set link     = config.plugins.snappygrav.breadcrumbs_link %}
-{% set current  = config.plugins.snappygrav.breadcrumbs_current %}
 
-{% set p_title  = config.plugins.snappygrav.preface_title %}
-{% set p_author = config.plugins.snappygrav.preface_author %}
-{% set p_date   = config.plugins.snappygrav.preface_date %}
+{% macro crumb(p, address, array, twig_vars) %}
 
-{% set date_format = config.plugins.snappygrav.date_format %}
-{% set date_fmt = config.system.pages.dateformat.short %}
-{% if date_format == "long" %}
-    {% set date_fmt = config.system.pages.dateformat.long %}
-{% endif %}
+  {% set link = twig_vars['config'].plugins.snappygrav.breadcrumbs_link %}
 
-{% set count    = parameters.breadcrumbs|length %}
-{% set star     = 0 %}
-{% set end      = count %}
-{% if not current %}
-    {% set end = count -1 %}
-{% endif %}
+  {% if p.parent.slug == 'pages' %}
+  
+    {% for key, value in array|reverse %}
+        {% if link %}
+          {% set internal_link = '<a href="#' ~ value.slug ~ '">' ~ value.title ~ '</a>' %}
+        {% else %}
+          {% set internal_link = value.title %}
+        {% endif %}
+        {% set address = address ~ ' / ' ~ internal_link %}
+    {% endfor %}
 
-{% block content %}
+  {% else %}
+
+    {% set array = array|merge([ { 'slug': p.parent.slug, 'title': p.parent.title, 'route': p.parent.route } ]) %}
+    {{ _self.crumb(p.parent, address, array, twig_vars) }}
+    
+  {% endif %}
+  
+  {{ address }}
+  
+{% endmacro %}
+
+
+{% macro loop(p, depth, twig_vars, parameters) %}
+
+  {% set bread    = twig_vars['config'].plugins.snappygrav.breadcrumbs_enabled %}
+  {% set page_break  = twig_vars['config'].plugins.snappygrav.page_break %}
+  {% set p_title  = twig_vars['config'].plugins.snappygrav.preface_title %}
+  {% set p_author = twig_vars['config'].plugins.snappygrav.preface_author %}
+  {% set p_date   = twig_vars['config'].plugins.snappygrav.preface_date %}
+  {% set date_format = twig_vars['config'].plugins.snappygrav.date_format %}
+  {% set date_fmt = twig_vars['config'].system.pages.dateformat.short %}
+  {% if date_format == "long" %}
+      {% set date_fmt = twig_vars['config'].system.pages.dateformat.long %}
+  {% endif %}
+
+  {% if p.visible %}
+
+    {% if page_break %}
+      <div style="page-break-before:always">&nbsp;</div>
+    {% endif %}
 
     {% if bread %}
-        <p class="crumbs_snappy">
-            {% for crumb in parameters.breadcrumbs|slice( start, end ) %}
-                {% if link %} <a href="{{base_url_absolute}}{{ crumb.route }}"> {% endif %}
-                {{ crumb.title }}
-                {% if link %} </a> {% endif %}
-                {% if not loop.last %} &nbsp;&gt;&nbsp; {% endif %}
-            {% endfor %}
-        </p>
+      {% set array = [] %}
+      <p>{{ _self.crumb(p, '', array, twig_vars) }} / <b><a name="{{ p.slug }}">{{ p.title }}</a></b> </p>
     {% endif %}
 
-    {% if p_title %}<h2><center>{{ page.title }}</center></h2>{% endif %}
-    
+    {% if p_title %}<h2><center>{{ p.title }}</center></h2>{% endif %}
+
     {% if p_author %}
-        {% set list_author = page.taxonomy.author %}
-        {% if list_author is not empty %}
-            <center><b>{{ list_author|snappy_implode(", ") }}</b></center>
-        {% endif %}
-    {% endif %}
-    
-    {% if p_date %}<center><b>{{ page.date|date(date_fmt) }}</b></center>{% endif %}
-
-    {{ page.content }}
-    
-    {% if parameters.branch %}
-        {% if page.children() %}
-            {% set children = page.children() %}
-            {% for child in children %}
-                <div style="page-break-before:always">&nbsp;</div>
-                <h2><center>{{ child.title }}</center></h2>
-                {{ child.content }}
-            {% endfor %}
-            {#<b>{{ page.children.count() }}</b>
-            <p>|{{ page.children.current.slug }}|</p>#}
-        {% endif %}
+      {% set list_author = p.taxonomy.author %}
+      {% if list_author is not empty %}
+        <center><b>{{ list_author|snappy_implode(", ") }}</b></center>
+      {% endif %}
     {% endif %}
 
+    {% if p_date %}<center><b>{{ p.date|date(date_fmt) }}</b></center>{% endif %}
+
+    {{ p.content }}
+
+    {% set pcol = p.children() %}
+    {% for pages in pcol %}
+      {% if pages.children().count > 0 %}
+        {{ _self.loop(pages, depth + 1, twig_vars, parameters) }}
+      {% else %}
+        {{ _self.loop(pages, depth, twig_vars, parameters) }}
+      {% endif %}
+    {% endfor %}
+    
+  {% endif %}
+
+{% endmacro %}
+
+
+{% block content %}
+  {{ _self.loop(page, 0, _context, parameters) }}
 {% endblock %}

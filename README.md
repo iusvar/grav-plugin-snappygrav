@@ -94,44 +94,43 @@ I've tried this string for:
 
 You can do this configuration in the plugin's configuration.  Simply copy the `user/plugins/snappygrav/snappygrav.yaml` into `user/config/plugins/snappygrav.yaml` and make your modifications.
 
-```
-enabled: true                           # Set to false to disable this plugin completely.
-built_in_css: true                      # Use built-in CSS of the plugin.
-wk_absolute_pos: false                  # True meaning under the plugin, fake under the operating system (default = false)
-wk_path: vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386
-                                        # Path of the wkhtmltopdf program
-default_type: pdf                       # Preferred document format.
-slug_blog: blog                         # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
-set_time_limit: 60                      # Limits the maximum execution time
-preface_title: true                     # When true prints title (default = false)
-preface_author: true                    # When true prints author (default = false)
-preface_date: true                      # When true prints date (default = false)
-breadcrumbs_enabled: true               # When true prints breadcrumbs (default = true)
-breadcrumbs_link: true                  # When true prints link to the online document (default = true)
-breadcrumbs_current: true               # When true prints also the current entry (default = true)
-branch_enabled: true                    # When true print also prints the children of the current page (default = true)
-date_format: short                      # Gets the date format (short or long) from the configuration of the file system.yaml
-theme: light                            # jQuery Confirm v3: theme
-btn_export: Create                      # Button text to confirm
-btn_cancel: Cancel                      # Button text to cancel
-btn_export_color: green                 # Background color of the button to confirm
-btn_cancel_color: gray                  # Background color of the button to cancel
-btn_plugin: Export                      # Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present.
-icn_plugin: fa-download                 # Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present.
-btn_plugin_color: '#ffffff'             # Color of the plugin button text
-btn_plugin_bg_color: '#63e010'          # Background color of the plugin button text
-btn_plugin_hover_color: '#ffffff'       # Color of the plugin button text when mouse over
-btn_plugin_hover_bg_color: '#eb0c0c'    # Background color of the plugin button text when mouse over
-grayscale: false                        # PDF will be generated in grayscale if true (default = false)
-margin_bottom: 10                       # <unitreal> Set the page bottom margin (default 10mm)
-margin_left: 10                         # <unitreal> Set the page left margin (default 10mm)
-margin_right: 10                        # <unitreal> Set the page right margin (default 10mm)
-margin_top: 10                          # <unitreal> Set the page top margin (default 10mm)
-orientation: Portrait                   # Set orientation to Landscape or Portrait
-title: true                             # I prefer True or False, getting title from site page
-zoom: 1                                 # Use this zoom factor (default 1) <float>
-print_media_type: true                  # Use print media-type instead of screen (default).
-```
+| Variable | Default | Options | Note |
+|----------|---------|-------------------------------------------------|--------------------------------------------------------------------------------------------|
+| enabled | true | `true` or `false` | Set to false to disable this plugin completely. |
+| built_in_css | true | `true` or `false` | Use built-in CSS of the plugin. |
+| wk_absolute_pos | false | `true` or `false` | True meaning under the plugin, fake under the operating system |
+| wk_path | `vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386` | string | Path of the wkhtmltopdf program |
+| default_type | pdf | `pdf` or `epub` or `azw3` | Preferred document format. |
+| slug_blog | blog | string | For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts |
+| set_time_limit | 60 | number | Limits the maximum execution time |
+| preface_title | true | `true` or `false` | When true prints title |
+| preface_author | true | `true` or `false` | When true prints author |
+| preface_date | true | `true` or `false` | When true prints date |
+| breadcrumbs_enabled | true | `true` or `false` | When true prints breadcrumbs |
+| breadcrumbs_link | true | `true` or `false` | When true prints link to the online document |
+| branch_enabled | true | `true` or `false` | When true print also prints the children of the current page |
+| page_break | true | `true` or `false` | When true adds a page-break before a page |
+| date_format | short | `short` or `long` | Gets the date format from the configuration of the file system.yaml |
+| theme | light |  | jQuery Confirm v3: theme |
+| btn_export | Create |  | Button text to confirm |
+| btn_cancel | Cancel |  | Button text to cancel |
+| btn_export_color | green |  | Background color of the button to confirm |
+| btn_cancel_color | gray |  | Background color of the button to cancel |
+| btn_plugin | Export |  | Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present. |
+| icn_plugin | fa-download |  | Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present. |
+| btn_plugin_color | '#ffffff' |  | Color of the plugin button text |
+| btn_plugin_bg_color | '#63e010' |  | Background color of the plugin button text |
+| btn_plugin_hover_color | '#ffffff' |  | Color of the plugin button text when mouse over |
+| btn_plugin_hover_bg_color | '#eb0c0c' |  | Background color of the plugin button text when mouse over |
+| grayscale | false | `true` or `false` | PDF will be generated in grayscale if true |
+| margin_bottom | 10 |  | <unitreal> Set the page bottom margin |
+| margin_left | 10 |  | <unitreal> Set the page left margin |
+| margin_right | 10 |  | <unitreal> Set the page right margin |
+| margin_top | 10 |  | <unitreal> Set the page top margin |
+| orientation | Portrait | `Landscape` or `Portrait` | Set orientation |
+| title | true | `true` or `false` | Getting title from site page |
+| zoom | 1 | float | Use this zoom factor |
+| print_media_type | true | `true` or `false` | Use print media-type instead of screen. |
 
 > Note: The expected values for the Paper Size are really many, to know what you are going to read them directly in the [source file](https://github.com/wkhtmltopdf/wkhtmltopdf/blob/master/src/lib/pdfsettings.cc) from line 174 to line 203.
 

@@ -1,3 +1,13 @@
+# v1.8.0
+## 09/27/2018
+
+1. [](#new)
+    * [#37](https://github.com/iusvar/grav-plugin-snappygrav/issues/37) Add branch export for more subfolderlevels
+    * [#36](https://github.com/iusvar/grav-plugin-snappygrav/issues/36) Add excluding subfolder from branch export
+    * Updated h4cc/wkhtmltopdf-amd64 to 0.12.5
+    * Updated h4cc/wkhtmltopdf-i386 to 0.12.4
+    * Added settings for page_break.
+
 # v1.7.0
 ## 09/04/2018
 

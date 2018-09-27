@@ -12,9 +12,9 @@ preface_date: true              # When true prints date (default = false)
 
 breadcrumbs_enabled: true       # When true prints breadcrumbs (default = true)
 breadcrumbs_link: true          # When true prints link to the online document (default = true)
-breadcrumbs_current: true       # When true prints also the current entry (default = true)
 
 branch_enabled: true            # When true print also prints the children of the current page (default = true)
+page_break: true                # When true adds a page-break before a page
 #send_email: false               # When true sends the document just created by email (default = false)
 
 date_format: short              # Gets the date format (short or long) from the configuration of the file system.yaml

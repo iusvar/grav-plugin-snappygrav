@@ -1,3 +1,11 @@
+# v1.9.0
+## 11/12/2018
+
+1. [](#new)
+    * Added a text area to insert additional CSS.
+    * Added option regarding inserting the first image of the page. The width and height can be changed.
+    * Added option regarding the placement of the wkhtmltopdf library in the data folder
+
 # v1.8.0
 ## 09/27/2018
 

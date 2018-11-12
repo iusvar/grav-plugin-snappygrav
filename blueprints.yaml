@@ -1,5 +1,5 @@
 name: SnappyGrav
-version: 1.8.0
+version: 1.9.0
 description: Save a page, branch or all website in PDF format
 icon: file-pdf-o
 author:
@@ -35,6 +35,7 @@ form:
     built_in_css:
       type: toggle
       label: PLUGIN_SNAPPYGRAV.USE_BUILT_IN_CSS
+      help: PLUGIN_SNAPPYGRAV.USE_BUILT_IN_CSS_HELP
       highlight: 1
       default: 0
       options:
@@ -42,6 +43,13 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+
+    css_textarea:
+      type: textarea
+      size: medium
+      label: PLUGIN_SNAPPYGRAV.CSS_TEXTAREA
+      placeholder: PLUGIN_SNAPPYGRAV.CSS_TEXTAREA_PLACEHOLDER
+      help: PLUGIN_SNAPPYGRAV.CSS_TEXTAREA_HELP
 
     btn_plugin:
       type: text
@@ -88,26 +96,25 @@ form:
       title: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF
       underline: false
       
-    wk_absolute_pos:
+    wk_position:
       type: toggle
-      label: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF_ABSOLUTE_POS
-      default: 0
-      highlight: 0
+      label: PLUGIN_SNAPPYGRAV.WK_POSITION
+      default: 'plugin'
+      highlight: 'data'
       options:
-        0: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF_PLUGIN
-        1: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF_OS
-      validate:
-        type: bool
+        data: PLUGIN_SNAPPYGRAV.WK_DATA
+        plugin: PLUGIN_SNAPPYGRAV.WK_PLUGIN
+        os: PLUGIN_SNAPPYGRAV.WK_OS
 
     wk_spacer:
       type: spacer
-      text: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF_PATH_RULES
+      text: PLUGIN_SNAPPYGRAV.WK_PATH_RULES
            
     wk_path:
       type: text
       size: large
-      label: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF_PATH
-      help: PLUGIN_SNAPPYGRAV.WKHTMLTOPDF_PATH_HELP
+      label: PLUGIN_SNAPPYGRAV.WK_PATH
+      help: PLUGIN_SNAPPYGRAV.WK_PATH_HELP
       validate:
         type: string
       placeholder: "eg. vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386"
@@ -116,6 +123,38 @@ form:
       type: section
       title: PLUGIN_SNAPPYGRAV.PREFACE
       underline: false
+
+    preface_image:
+      type: toggle
+      label: PLUGIN_SNAPPYGRAV.PREFACE_IMAGE
+      help: PLUGIN_SNAPPYGRAV.PREFACE_IMAGE_HELP
+      highlight: 0
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    cropzoom_width:
+      type: text
+      size: x-small
+      label: PLUGIN_SNAPPYGRAV.CROPZOOM_WIDTH
+      help: PLUGIN_SNAPPYGRAV.CROPZOOM_WIDTH_HELP
+      append: px
+      default: 800
+      validate:
+        type: number
+
+    cropzoom_height:
+      type: text
+      size: x-small
+      label: PLUGIN_SNAPPYGRAV.CROPZOOM_HEIGHT
+      help: PLUGIN_SNAPPYGRAV.CROPZOOM_HEIGHT_HELP
+      append: px
+      default: 400
+      validate:
+        type: number
 
     preface_title:
       type: toggle

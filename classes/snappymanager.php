@@ -209,7 +209,6 @@ class SnappyManager
             }*/ /* evaluate */
 
             foreach ($collection as $page) {
-              
                 $parameters['breadcrumbs']  = $this->get_crumbs( $page );
                 $parameters['branch']       = ($branch == 'yes' ? true : false );
                 $temp_html = $twig->processTemplate('snappygrav.html.twig', ['page' => $page, 'parameters' => $parameters]);
@@ -252,19 +251,21 @@ class SnappyManager
     protected function runWk( $html )
     {
         // Placement/Path of the wkhtmltopdf program
-        $wk_absolute_pos = ( $this->config->get('plugins.snappygrav.wk_absolute_pos') ? true : false );
+        $wk_position = $this->config->get('plugins.snappygrav.wk_position');
         $wk_path = $this->config->get('plugins.snappygrav.wk_path');
-        if( $wk_absolute_pos ) {
-            //true, absolute, under o.s.
-            $wk_path = ( empty($wk_path) ? '/usr/local/bin/wkhtmltopdf' : $wk_path );
-        } else {
-            //false, relative, under plugin
-            $wk_path_prepend = GRAV_ROOT .'/user/plugins/snappygrav/';
+
+        switch ($wk_position) {
+          case 'data':
+            $wk_path = ( empty($wk_path) ? GRAV_ROOT .DS. '/user/data/snappygrav/wkhtmltopdf-i386' : GRAV_ROOT .DS. $wk_path );
+            break;
+          case 'plugin':
+            $wk_path_prepend = GRAV_ROOT .DS. 'user/plugins/snappygrav/';
             $wk_path = ( empty($wk_path) ? $wk_path_prepend . 'vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386' : $wk_path_prepend . $wk_path );
+            break;
+          case 'os':
+            $wk_path = ( empty($wk_path) ? '/usr/local/bin/wkhtmltopdf' : $wk_path );
+            break;
         }
-        
-        //$wk_path = ROOT_DIR .'user/plugins/snappygrav/'. $this->config->get('plugins.snappygrav.wk_path');
-        //if( (empty($wk_path)) || (!file_exists($wk_path)) ) $wk_path = ROOT_DIR .'user/plugins/snappygrav/'. 'vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386';
 
         // Check if wkhtmltopdf-i386 is executable
         if (file_exists($wk_path)) {
@@ -273,13 +274,6 @@ class SnappyManager
                 @chmod($wk_path, 0755); //33261
             }
         }
-
-        // If the file does not exist displays an alert and exits the procedure
-        /*if (!file_exists($wk_path)) {
-            $message = 'The file\n '.$wk_path.'\n does not exist!';
-            echo '<script type="text/javascript">alert("'.$message.'");</script>';
-            break;
-        }*/
 
         $snappy = new \Knp\Snappy\Pdf( $wk_path );
         

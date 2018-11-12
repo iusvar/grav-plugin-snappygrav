@@ -1,8 +1,9 @@
 # Global plugin configurations.
 enabled: true                   # Set to false to disable this plugin completely.
 built_in_css: true              # Use built-in CSS of the plugin.
-wk_absolute_pos: false          # True meaning under the plugin, fake under the operating system (default = false)
-wk_path: vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386                          # Path of the wkhtmltopdf program
+css_textarea: ".title {color:blue;}" # Additional CSS
+wk_position: plugin             # The options are: data, plugin, os (default: plugin)
+wk_path: ''                     # Path of the wkhtmltopdf program
 default_type: pdf               # Preferred document format.
 slug_blog: blog                 # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
 set_time_limit: 60              # Limits the maximum execution time

@@ -5,9 +5,21 @@
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
     {% endblock %}
     {% block stylesheets %}
+
+      {% set built_in_css = config.plugins.snappygrav.built_in_css %}
+      {% if built_in_css %}
         {% do assets.addCss('plugin://snappygrav/assets/css/paper.css', 100) %}
+      {% endif %}
+      {{ assets.css()|raw }}
+      
+      {% set css_textarea  = config.plugins.snappygrav.css_textarea %}
+      {% if css_textarea is not empty %}
+        <style>
+          {{ css_textarea|raw }}
+        </style>
+      {% endif %}
+
     {% endblock %}
-    {{ assets.css() }}
 </head>
 <body>
     {% block body %}

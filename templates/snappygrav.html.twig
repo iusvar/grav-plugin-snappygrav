@@ -1,12 +1,8 @@
 {% extends 'partials/snappy-base.html.twig' %}
 
-
 {% macro crumb(p, address, array, twig_vars) %}
-
   {% set link = twig_vars['config'].plugins.snappygrav.breadcrumbs_link %}
-
   {% if p.parent.slug == 'pages' %}
-  
     {% for key, value in array|reverse %}
         {% if link %}
           {% set internal_link = '<a href="#' ~ value.slug ~ '">' ~ value.title ~ '</a>' %}
@@ -15,16 +11,11 @@
         {% endif %}
         {% set address = address ~ ' / ' ~ internal_link %}
     {% endfor %}
-
   {% else %}
-
     {% set array = array|merge([ { 'slug': p.parent.slug, 'title': p.parent.title, 'route': p.parent.route } ]) %}
     {{ _self.crumb(p.parent, address, array, twig_vars) }}
-    
   {% endif %}
-  
-  {{ address }}
-  
+  {{ address|raw }}
 {% endmacro %}
 
 
@@ -41,6 +32,10 @@
       {% set date_fmt = twig_vars['config'].system.pages.dateformat.long %}
   {% endif %}
 
+  {% set p_image  = twig_vars['config'].plugins.snappygrav.preface_image %}
+  {% set cz_width  = twig_vars['config'].plugins.snappygrav.cropzoom_width %}
+  {% set cz_height  = twig_vars['config'].plugins.snappygrav.cropzoom_height %}
+
   {% if p.visible %}
 
     {% if page_break %}
@@ -52,18 +47,25 @@
       <p>{{ _self.crumb(p, '', array, twig_vars) }} / <b><a name="{{ p.slug }}">{{ p.title }}</a></b> </p>
     {% endif %}
 
-    {% if p_title %}<h2><center>{{ p.title }}</center></h2>{% endif %}
+{% if p_image %}
+  {% set image = p.media.images|first %}
+  {% if image %}
+    {{ image.cropZoom(cz_width,cz_height).html }}
+  {% endif %}
+{% endif %}
+
+    {% if p_title %}<h1 class="title"><center>{{ p.title|raw }}</center></h1>{% endif %}
 
     {% if p_author %}
       {% set list_author = p.taxonomy.author %}
       {% if list_author is not empty %}
-        <center><b>{{ list_author|snappy_implode(", ") }}</b></center>
+        <center><b>{{ list_author|snappy_implode(", ")|raw }}</b></center>
       {% endif %}
     {% endif %}
 
-    {% if p_date %}<center><b>{{ p.date|date(date_fmt) }}</b></center>{% endif %}
+    {% if p_date %}<center><b>{{ p.date|date(date_fmt)|raw }}</b></center>{% endif %}
 
-    {{ p.content }}
+    {{ p.content|raw }}
 
     {% set pcol = p.children() %}
     {% for pages in pcol %}

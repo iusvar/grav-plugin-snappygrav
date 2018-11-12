@@ -2,13 +2,14 @@
 PLUGIN_SNAPPYGRAV:
   BTN_PLUGIN: Plugin Button Text
   ICN_PLUGIN: Plugin Button Icon
-  WKHTMLTOPDF: Wkhtmltopdf
-  WKHTMLTOPDF_ABSOLUTE_POS: Positioning under
-  WKHTMLTOPDF_PLUGIN: Plugin
-  WKHTMLTOPDF_OS: Operating System
-  WKHTMLTOPDF_PATH_RULES: 'Path Rules:<br/>- Partial, if <b>Positioning under</b> provides <b>Plugins</b> (eg <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- Absolute, if <b>Positioning under</b> provides <b>Operating System</b> (eg <i>/usr/local/bin/wkhtmltopdf</i>)<br/>In both cases, when <b>Path</b> is left blank, the respective examples are used as default values.'
-  WKHTMLTOPDF_PATH: Path
-  WKHTMLTOPDF_PATH_HELP: Path of Binary Wkhtmltopdf
+  WKHTMLTOPDF: WKhtmlTOpdf
+  WK_POSITION: Positioning under
+  WK_PLUGIN: Plugin
+  WK_OS: O.S.
+  WK_DATA: Data Folder
+  WK_PATH_RULES: 'Path Rules:<br/>- Under <b>Data</b> folder (eg <i>user/data/snappygrav/wkhtmltopdf-i386</i>). <span style="color:red;">In the next version it will be the default option, so binary files will no longer be provided. Each administrator will position his own binary file that would no longer be covered by subsequent updates.</span><br/>- Under <b>Plugins</b> (eg <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- Under <b>O.S.</b> (eg <i>/usr/local/bin/wkhtmltopdf</i>)<br/>In all cases, when <b>Path</b> is left blank, the respective examples are used as default values.'
+  WK_PATH: Path
+  WK_PATH_HELP: Path of Binary Wkhtmltopdf. You can leave it blank when your folder matches the examples in the Path Rules.
   DATE_FORMAT: Date Format
   SHORT: Short
   LONG: Long
@@ -18,7 +19,21 @@ PLUGIN_SNAPPYGRAV:
   PDF: Pdf
   BASICS: Basics
   USE_BUILT_IN_CSS: Use Built in CSS
+  USE_BUILT_IN_CSS_HELP: If enabled, Absolute URLs in the system.yaml must be set to yes
+
+  CSS_TEXTAREA: Additional CSS
+  CSS_TEXTAREA_PLACEHOLDER: Adding CSS
+  CSS_TEXTAREA_HELP: Additional CSS placed after possible paper.css
+  
   PREFACE: Preface
+  
+  PREFACE_IMAGE: Image Status
+  PREFACE_IMAGE_HELP:  Displays the first image of the page. Useful if not included on the same page.
+  CROPZOOM_WIDTH: Image Width
+  CROPZOOM_WIDTH_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
+  CROPZOOM_HEIGHT: Image Height
+  CROPZOOM_HEIGHT_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
+  
   PREFACE_TITLE: Title Status
   PREFACE_TITLE_HELP: Displays the title of the page. Useful if not included on the same page.
   PREFACE_AUTHOR: Author Status

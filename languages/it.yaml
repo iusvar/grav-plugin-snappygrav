@@ -2,13 +2,14 @@
 PLUGIN_SNAPPYGRAV:
   BTN_PLUGIN: Testo pulsante plugin
   ICN_PLUGIN: Icona pulsante plugin
-  WKHTMLTOPDF: Wkhtmltopdf
-  WKHTMLTOPDF_ABSOLUTE_POS: Posizionamento sotto
-  WKHTMLTOPDF_PLUGIN: Plugin
-  WKHTMLTOPDF_OS: Sistema Operativo
-  WKHTMLTOPDF_PATH_RULES: 'Regole di percorso:<br/>- parziale, se <b>Posizionamento sotto</b> prevede <b>Plugin</b> (es. <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- assoluto, se <b>Posizionamento sotto</b> prevede <b>Sistema Operativo</b> (es. <i>/usr/local/bin/wkhtmltopdf</i>)<br/>In entrambi i casi, quando <b>Percorso</b> è lasciato vuoto, i rispettivi esempi sono usati come valori di default.'
-  WKHTMLTOPDF_PATH: Percorso
-  WKHTMLTOPDF_PATH_HELP: Percorso del programma Wkhtmltopdf
+  WKHTMLTOPDF: WKhtmlTOpdf
+  WK_POSITION: Posizionamento sotto
+  WK_PLUGIN: Plugin
+  WK_OS: S.O.
+  WK_DATA: Cartella Data
+  WK_PATH_RULES: "Regole del percorso:<br/>- nella cartella <b>Dati</b> (eg <i>user/data/snappygrav/wkhtmltopdf-i386</i>). <span style='color:red;'>Nella prossima versione sarà l'opzione predefinita, quindi i file binari non saranno più forniti. Ogni amministratore posizionerà il proprio file binario che non verrebbe più coperto dagli aggiornamenti successivi.</span><br/>- sotto <b>Plugins</b> (eg <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- Sotto <b>S.O.</b> (eg <i>/usr/local/bin/wkhtmltopdf</i>)<br/>In tutti i casi, quando <b>Percorso</b> viene lasciato vuoto, i rispettivi esempi vengono utilizzati come valori predefiniti."
+  WK_PATH: Percorso
+  WK_PATH_HELP: Percorso del programma Wkhtmltopdf. Si può lasciare vuoto quando la propria cartella corrisponde agli esempi nelle Regole del percorso
   DATE_FORMAT: Formato data
   SHORT: Breve
   LONG: Lungo
@@ -18,7 +19,21 @@ PLUGIN_SNAPPYGRAV:
   PDF: Pdf
   BASICS: Fondamentali
   USE_BUILT_IN_CSS: Usa CSS interno
+  USE_BUILT_IN_CSS_HELP: Se abilitato, Absolute URLs nel system.yaml deve essere impostato come sì
+  
+  CSS_TEXTAREA: CSS aggiuntivo
+  CSS_TEXTAREA_PLACEHOLDER: Aggiungere CSS
+  CSS_TEXTAREA_HELP: CSS aggiuntivo posto dopo eventuale paper.css
+
   PREFACE: Prefazione
+
+  PREFACE_IMAGE: Stato immagine
+  PREFACE_IMAGE_HELP:  Visualizza la prima immagine della pagina. Utile se non inclusa nella stessa pagina.
+  CROPZOOM_WIDTH: Larghezza immagine
+  CROPZOOM_WIDTH_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
+  CROPZOOM_HEIGHT: Altezza immagine
+  CROPZOOM_HEIGHT_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
+  
   PREFACE_TITLE: Stato del titolo
   PREFACE_TITLE_HELP: Visualizza il titolo della pagina. Utile se non incluso nella stessa pagina.
   PREFACE_AUTHOR: Stato dell'autore

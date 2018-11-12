@@ -54,6 +54,7 @@ For amd64 replace with wkhtmltopdf-amd64.
 
 For now the `snappygrav` plugin as been tested for three types of sites:
 
+* [Blog Site](https://github.com/getgrav/grav-skeleton-blog-site) skeleton with [Quark](https://github.com/getgrav/grav-theme-quark) theme by [Grav Team](https://getgrav.org/about)
 * [Blog Site](https://github.com/getgrav/grav-skeleton-blog-site) skeleton with [Antimatter](https://github.com/getgrav/grav-theme-antimatter) theme by [Grav Team](https://getgrav.org/about)
 * [RTFM Site](https://github.com/getgrav/grav-skeleton-rtfm-site) skeleton with [Learn2](https://github.com/getgrav/grav-theme-learn2) theme by [Grav Team](https://getgrav.org/about)
 * [Knowledge Base](https://github.com/Perlkonig/grav-skeleton-knowledge-base) skeleton with [Knowledge Base](https://github.com/Perlkonig/grav-theme-knowledge-base) theme by [Aaron Dalton](https://github.com/Perlkonig)
@@ -72,7 +73,7 @@ The `snappygrav` plugin must be included into your theme, where you want to disp
 
 I've tried this string for:
 
-* `Blog Site` in `partials/blog_item.html.twig`
+* `Blog Site` in `blog-list-item.html` (Quark), `partials/blog_item.html.twig` (Antimatter)
 * `RTFM Site` in `partials/github_link.html.twig`
 * `Knowledge Base` in `item.html.twig`
 
@@ -86,7 +87,7 @@ You can print your all site as a PDF with:
 
 I've tried this string for:
 
-* `Blog Site` in `partials/sidebar.html.twig`
+* `Blog Site` in `partials/sidebar.html.twig` (both Quark and Antimatter)
 * `RTFM Site` in `partials/sidebar.html.twig`
 * `Knowledge Base` in `partials/sidebar.html.twig`
 
@@ -98,8 +99,9 @@ You can do this configuration in the plugin's configuration.  Simply copy the `u
 |----------|---------|-------------------------------------------------|--------------------------------------------------------------------------------------------|
 | enabled | true | `true` or `false` | Set to false to disable this plugin completely. |
 | built_in_css | true | `true` or `false` | Use built-in CSS of the plugin. |
-| wk_absolute_pos | false | `true` or `false` | True meaning under the plugin, fake under the operating system |
-| wk_path | `vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386` | string | Path of the wkhtmltopdf program |
+| css_textarea | ".title {color:blue;}" | string | Additional CSS |
+| wk_position | plugin | `data` or `plugin` or `os` | Position of the wkhtmltopdf program |
+| wk_path |  | string | Path of the wkhtmltopdf program |
 | default_type | pdf | `pdf` or `epub` or `azw3` | Preferred document format. |
 | slug_blog | blog | string | For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts |
 | set_time_limit | 60 | number | Limits the maximum execution time |

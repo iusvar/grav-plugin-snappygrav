@@ -7,6 +7,7 @@
     * Added option regarding the placement of the wkhtmltopdf library in the data folder. Useful for administrators because future plugin updates do not overwrite the binary file
     * Making snappygrav work with other plugins. Thanks @hughbris [#39](https://github.com/iusvar/grav-plugin-snappygrav/issues/39)
     * Added ability to use mPDF and TCPDF libraries.
+    * The KnpLabs Snappy and Wkhtmltopdf libraries have been removed. Both these and mPDF and TCPDF must be installed by the administrator.
 
 # v1.8.0
 ## 09/27/2018

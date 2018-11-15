@@ -30,25 +30,25 @@ You should now have all the plugin files under
 
 To work the plugin `snappygrav` use the following libraries:
 
-* [KnpLabs Snappy](https://github.com/KnpLabs/snappy), the PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. The library Snappy is a product of [Matthieu Bontemps](https://github.com/mbontemps) of [KNP Labs](http://KNPLabs.ch), released under the MIT License.
-* [Wkhtmltopdf](http://wkhtmltopdf.org/), the open source (LGPLv3) command line tools to render HTML into PDF (minimum version required 0.12.x). The Wkhtmltopdf project maintained by [Ashish Kulkarni](https://github.com/ashkulz), originally created by [Jakob Truelsen](https://github.com/antialize), released under open source License (LGPLv3).
-* [jquery-confirm v3](https://craftpip.github.io/jquery-confirm/) library with changes. The library, produced by [Boniface Pereira](https://github.com/craftpip), is released under the MIT License.
-* [FileSaver](https://github.com/eligrey/FileSaver.js) library, produced by [Eli Grey](https://github.com/eligrey), released under the MIT License.
-* [base64-binary.js](https://github.com/danguer/blog-examples/blob/master/js/base64-binary.js) library, produced by [Daniel Guerrero](https://github.com/danguer), released under the BSD 2-clause "Simplified" License.
+* To be installed by the administrator, alternatively 1 or 2 or 3/4.
+  1. [mPDF](https://github.com/mpdf/mpdf), a PHP library which generates PDF files from UTF-8 encoded HTML.
+  2. [TCPDF](https://github.com/tecnickcom/TCPDF), a free Open Source PHP class for generating PDF documents.
+  3. [KnpLabs Snappy](https://github.com/KnpLabs/snappy), the PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page.
+  4. [Wkhtmltopdf](http://wkhtmltopdf.org/), the open source (LGPLv3) command line tools to render HTML into PDF (minimum version required 0.12.x).
 
-> From version v1.3.1-rc.1 the first two libraries are already provided in the vendor folder (knplabs/knp-snappy and h4cc/wkhtmltopdf-i386). The latest library is provided by version 1.5.0.
+* Already contained in the plugin:
+  * [jquery-confirm v3](https://craftpip.github.io/jquery-confirm/) library with changes.
+  * [FileSaver](https://github.com/eligrey/FileSaver.js) library.
+  * [base64-binary.js](https://github.com/danguer/blog-examples/blob/master/js/base64-binary.js) library.
 
-However it is useful to know that the simplest way to install `KnpLabs Snappy` and `Wkhtmltopdf` is via [Composer](http://getcomposer.org/). Regarding Snappy, place yourself in the Snappygrav plugin folder and type:
+However it is useful to know that the simplest way to install the libraries from 1 to 4 is via [Composer](http://getcomposer.org/). So, place yourself in the Snappygrav plugin folder and type:
 
-    $ composer require knplabs/knp-snappy
-
-While for wkhtmltopdf, for i386, as follows:
-
-    $ composer require h4cc/wkhtmltopdf-i386
-
-For amd64 replace with wkhtmltopdf-amd64.
-
-> Note: Binaries for Microsoft Windows, also installable with composer, can be found here: [github.com/wemersonjanuario/wkhtmltopdf-windows](https://github.com/wemersonjanuario/wkhtmltopdf-windows). Sorry unproved, I live in Ubuntu :-)
+| Number | Library | Command |
+|--------|---------|---------|
+| 1 | mPDF | `composer require mpdf/mpdf` |
+| 2 | TCPDF | `composer require tecnickcom/tcpdf` |
+| 3 | KnpLabs Snappy | `composer require knplabs/knp-snappy` |
+| 4 | Wkhtmltopdf | `composer require h4cc/wkhtmltopdf-i386` or `composer require h4cc/wkhtmltopdf-amd64` or ... (God save administrators!) |
 
 # Usage
 
@@ -118,8 +118,8 @@ You can do this configuration in the plugin's configuration.  Simply copy the `u
 | btn_cancel | Cancel |  | Button text to cancel |
 | btn_export_color | green |  | Background color of the button to confirm |
 | btn_cancel_color | gray |  | Background color of the button to cancel |
-| btn_plugin | Export |  | Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present. |
-| icn_plugin | fa-download |  | Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present. |
+| button_text | Export |  | Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present. |
+| button_icon | fa-download |  | Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present. |
 | btn_plugin_color | '#ffffff' |  | Color of the plugin button text |
 | btn_plugin_bg_color | '#63e010' |  | Background color of the plugin button text |
 | btn_plugin_hover_color | '#ffffff' |  | Color of the plugin button text when mouse over |

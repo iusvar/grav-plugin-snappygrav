@@ -1,96 +1,86 @@
 # Italiano
 PLUGIN_SNAPPYGRAV:
-  BTN_PLUGIN: Testo pulsante plugin
-  ICN_PLUGIN: Icona pulsante plugin
+
+  # INIZIO BLUEPRINTS.YAML
+    
+  # BASE
+  TAB_BASIS: Base
+
+  PDF_ENGINE: Motore PDF
+  LIBRARY: 'Libreria<br/><span style="color:red;">Installa le librerie prima di usare il plugin.</span><br/>Le istruzioni sono nelle rispettive schede.'
+  MPDF: mPDF
+  TCPDF: TCPDF
   WKHTMLTOPDF: WKhtmlTOpdf
-  WK_POSITION: Posizionamento sotto
-  WK_PLUGIN: Plugin
-  WK_OS: S.O.
-  WK_DATA: Cartella Data
-  WK_PATH_RULES: "Regole del percorso:<br/>- nella cartella <b>Dati</b> (eg <i>user/data/snappygrav/wkhtmltopdf-i386</i>). <span style='color:red;'>Nella prossima versione sarà l'opzione predefinita, quindi i file binari non saranno più forniti. Ogni amministratore posizionerà il proprio file binario che non verrebbe più coperto dagli aggiornamenti successivi.</span><br/>- sotto <b>Plugins</b> (eg <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- Sotto <b>S.O.</b> (eg <i>/usr/local/bin/wkhtmltopdf</i>)<br/>In tutti i casi, quando <b>Percorso</b> viene lasciato vuoto, i rispettivi esempi vengono utilizzati come valori predefiniti."
-  WK_PATH: Percorso
-  WK_PATH_HELP: Percorso del programma Wkhtmltopdf. Si può lasciare vuoto quando la propria cartella corrisponde agli esempi nelle Regole del percorso
-  DATE_FORMAT: Formato data
-  SHORT: Breve
-  LONG: Lungo
-  DEFAULT_TYPE: Tipo documento predefinito
-  AZW3: Azw3
-  EPUB: ePub
-  PDF: Pdf
-  BASICS: Fondamentali
+
+  CSS_SECTION: Fogli di stile
   USE_BUILT_IN_CSS: Usa CSS interno
   USE_BUILT_IN_CSS_HELP: Se abilitato, Absolute URLs nel system.yaml deve essere impostato come sì
-  
   CSS_TEXTAREA: CSS aggiuntivo
   CSS_TEXTAREA_PLACEHOLDER: Aggiungere CSS
   CSS_TEXTAREA_HELP: CSS aggiuntivo posto dopo eventuale paper.css
 
-  PREFACE: Prefazione
+  PLUGIN_BUTTON: Pulsante plugin
+  BUTTON_TEXT_PLACEHOLDER: "es. Esporta"
+  BUTTON_ICON_PLACEHOLDER: "es. fa fa-download"
 
-  PREFACE_IMAGE: Stato immagine
-  PREFACE_IMAGE_HELP:  Visualizza la prima immagine della pagina. Utile se non inclusa nella stessa pagina.
-  CROPZOOM_WIDTH: Larghezza immagine
-  CROPZOOM_WIDTH_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
-  CROPZOOM_HEIGHT: Altezza immagine
-  CROPZOOM_HEIGHT_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
+  SECTION_BLOG_FOLDER: Cartella blog
+  BLOG_FOLDER: Slug
+  BLOG_FOLDER_HELP: Nome della cartella blog senza barra (né prima né dopo)
+
+  SECTION_TIME: Tempo di esecuzione
+  SET_TIME_LIMIT: Imposta il limite di tempo
+  SET_TIME_LIMIT_HELP: Limita il tempo massimo di esecuzione
+
+
+  # MPDF
+  INSTALLATION: Installazione
   
-  PREFACE_TITLE: Stato del titolo
-  PREFACE_TITLE_HELP: Visualizza il titolo della pagina. Utile se non incluso nella stessa pagina.
-  PREFACE_AUTHOR: Stato dell'autore
-  PREFACE_AUTHOR_HELP: Visualizza l'autore della pagina. Utile se non incluso nella stessa pagina.
-  PREFACE_DATE: Stato della data
-  PREFACE_DATE_HELP: Visualizza la data della pagina. Utile se non inclusa nella stessa pagina.
-  BREADCRUMBS: Breadcrumbs
-  BREADCRUMBS_ENABLED: Stato
-  BREADCRUMBS_ENABLED_HELP: Consente la visualizzazione della posizione
-  BREADCRUMBS_HELP: Stampa il percorso in testa al documento
-  BREADCRUMBS_LINK: Collegamento breadcrumbs
-  BREADCRUMBS_LINK_HELP: Ogni singola posizione si collega alla pagina online originale.
-  BRANCH: Ramo
-  BRANCH_ENABLED: Stato top-down
-  BRANCH_ENABLED_HELP: Aggiunge tutte le pagine discendenti dalla pagina corrente. La selezione viene effettuata solo dall'alto verso il basso.
-  PAGE_BREAK: Interruzione di pagina
-  PAGE_BREAK_HELP: Aggiunge un'interruzione di pagina prima di una pagina
-  JQUERY_CONFIRM: jQuery Confirm v3
-  THEME: Tema
-  LIGHT: Light
-  DARK: Dark
-  MODERN: Modern
-  SUPERVAN: Supervan
-  MATERIAL: Material
-  BOOTSTRAP: Bootstrap
-  BTN_EXPORT: Testo del pulsante di esportazione
-  BTN_EXPORT_COLOR: Colore del pulsante di esportazione
-  BTN_CANCEL: Tasto del pulsante di annullamento
-  BTN_CANCEL_COLOR: Colore del pulsante di annullamento
-  DEFAULT: Predefinito
-  BLUE: Blu
-  GREEN: Verde
-  RED: Rosso
-  ORANGE: Arancione
-  PURPLE: Viola
-  DARK: Nero
-  GRAY: Grigio
-  DOCUMENT_TYPE: Tipo documento
+  MPDF_SPACER: 'Prima di iniziare, spostarsi in <b>user/plugins/snappygrav/</b> ed eseguire <code>composer require mpdf/mpdf</code>'
+
+  SHOWWATERMARKTEXT: Mostra testo filigrana
+  SHOWWATERMARKTEXT_HELP: Specifica se mostrare o stampare il testo della filigrana su ogni pagina.
+  SETWATERMARKTEXT: Imposta il testo della filigrana
+  SETWATERMARKTEXT_HELP: Imposta il testo della filigrana che vuoi mostrare / stampare. Se vuoto, il valore di default è BOZZA.
+  SETWATERMARKTEXT_PLACEHOLDER: "es. BOZZA"
+  
+  # TCPDF
+  TCPDF_SPACER: 'Prima di iniziare, spostarsi in <b>user/plugins/snappygrav/</b> ed eseguire <code>composer require tecnickcom/tcpdf</code>'
   OPTIONS: Opzioni
-  AN_ERROR_OCCURRED: Si è verificato un errore
-  CREATION_FAILED: Creazione non riuscita
-  NOT_YET_MANAGED: non ancora gestito!
-  WAIT_FOR_FUTURE_UPDATES: Attendere i futuri aggiornamenti.
-  INVALID_SECURITY_TOKEN_TITLE: Token di sicurezza non valido
-  INVALID_SECURITY_TOKEN_TEXT: "Aggiorna la pagina con <b>F5</b> e riprova"
-  YOUR_DOCUMENT_IS_READY_FOR: Il file %1 è pronto per essere...
-  COLLECT_BRANCH: Includere rami dipendenti
-  COMPLETE_EXPORT: Esportazione completa del documento
-  SINGLE_OR_BRANCH_EXPORT: Esportazione singola o ramificata
-  BUTTON_EXPORT_TEXT: Crea
-  BUTTON_CANCEL_TEXT: Annulla
-  BUTTON_INLINE_TEXT: Letto in linea
-  BUTTON_ATTACH_TEXT: Scaricato
-  SLUG_BLOG: Cartella blog
-  SLUG_BLOG_HELP: Nome della cartella blog senza barra (né prima né dopo)
+    
+  SET_PRINT_HEADER: Imposta intestazione di stampa
+  SET_PRINT_HEADER_HELP: Imposta un flag per stampare l'intestazione della pagina.
+
+  SET_PRINT_FOOTER: Imposta il piè di pagina di stampa
+  SET_PRINT_FOOTER_HELP: Imposta un flag per stampare il piè di pagina.
+
+  # WKHTMLTOPDF
+  WKHTMLTOPDF_SPACER: 'Prima di iniziare, spostarsi in <b>user/plugins/snappygrav/</b> ed eseguire:<br/><code>composer require knplabs/knp-snappy</code><br/><code>composer require h4cc/wkhtmltopdf-i386</code> oppure <code>wkhtmltopdf-amd64</code> o altro.'
+
+  WK_BINARY_FILE_POSITION: Posizione file binario
+  WK_POSITION: Posizione
+  WK_DATA: Data
+  WK_PLUGIN: SnappyGrav
+  WK_OS: S.O.
+  WK_PATH_RULES: "Valore predefiniti in base a <b>Posizione</b>:<br/>- <b>Data</b>: <i>user/data/snappygrav/wkhtmltopdf-i386</i><br/>- <b>SnappyGrav</b>: <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i><br/>- <b>Sistema Operativo</b>: <i>/usr/local/bin/wkhtmltopdf</i><br/>Quando <b>Percorso</b> viene lasciato vuoto, i rispettivi valori predefiniti vengono usati."
+  WK_PATH: Percorso
+  WK_PATH_HELP: Percorso del programma Wkhtmltopdf. Si può lasciare vuoto quando la propria cartella corrisponde agli esempi nelle Regole del percorso.
+  WK_PATH_PLACEHOLDER: "es. vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386"
+
   MONOCHROME_PRINTOUT: Stampa in bianco e nero
   MONOCHROME_PRINTOUT_HELP: PDF verrà generato in scala di grigi se è vero
+
+  PRINT_MEDIA_TYPE: Print Media Type
+  PRINT_MEDIA_TYPE_HELP: Usa il supporto di stampa anziché lo schermo (impostazione predefinita). La cartella snappygrav/assets/css/ contiene il file paper.css in cui è possibile inserire le proprietà degli elementi in base al @media rule desiderato.
+
+  TOC: Sommario
+  TOC_HELP: Viene aggiunta una pagina in testa contente un sommario (predefinito disabilitato)
+  
+  ZOOM_FACTOR: Fattore di zoom
+  ZOOM_FACTOR_HELP: Usa questo fattore di zoom (predefinito 1)
+
+  # COMUNE
+  TAB_COMMON: Comune
+
   BOTTOM_MARGIN: Margine inferiore
   BOTTOM_MARGIN_HELP: Imposta il margine inferiore della pagina (predefinito 10 mm)
   LEFT_MARGIN: Margine sinistro
@@ -99,10 +89,15 @@ PLUGIN_SNAPPYGRAV:
   RIGHT_MARGIN_HELP: Imposta il margine destro della pagina (predefinito 10 mm)
   TOP_MARGIN: Margine superiore
   TOP_MARGIN_HELP: Imposta il margine superiore della pagina (predefinito 10 mm)
+
   PAGE_ORIENTATION: Orientamento pagina
   PAGE_ORIENTATION_HELP: Imposta orientamento orizzontale o verticale
   LANDSCAPE: Orizzontale
   PORTRAIT: Verticale
+
+  ENCODING: Codifica
+  ENCODING_PLACEHOLDER: "es. utf-8"
+
   PAGE_SIZE: Dimensioni della pagina
   PAGE_SIZE_HELP: Imposta il formato della carta a: A4, Lettera, ecc.
   EXECUTIVE: Executive
@@ -111,12 +106,97 @@ PLUGIN_SNAPPYGRAV:
   LEGAL: Legale
   LETTER: Lettera
   TABLOID: Tabloid (formato ridotto)
-  PAGE_SIZE_HELP: Imposta il formato della carta in: A4, Lettera, ecc.
+
   DOCUMENT_TITLE: Titolo del documento
   DOCUMENT_TITLE_HELP: Mette il titolo fra le proprietà nel documento PDF
-  ZOOM_FACTOR: Fattore di zoom
-  ZOOM_FACTOR_HELP: Usa questo fattore di zoom (predefinito 1)
-  PRINT_MEDIA_TYPE: Print Media Type
-  PRINT_MEDIA_TYPE_HELP: Usa il supporto di stampa anziché lo schermo (impostazione predefinita). La cartella snappygrav/assets/css/ contiene il file paper.css in cui è possibile inserire le proprietà degli elementi in base al @media rule desiderato.
-  SET_TIME_LIMIT: Imposta il limite di tempo
-  SET_TIME_LIMIT_HELP: Limita il tempo massimo di esecuzione
+
+  # METADATI
+  TAB_METADATA: Metadati
+
+  PREFACE: Prefazione
+  PREFACE_TITLE: Stato del titolo
+  PREFACE_TITLE_HELP: Visualizza il titolo della pagina. Utile se non incluso nella stessa pagina.
+  PREFACE_AUTHOR: Stato dell'autore
+  PREFACE_AUTHOR_HELP: Visualizza l'autore della pagina. Utile se non incluso nella stessa pagina.  
+  PREFACE_DATE: Stato della data
+  PREFACE_DATE_HELP: Visualizza la data della pagina. Utile se non inclusa nella stessa pagina.
+  DATE_FORMAT: Formato data
+  DATE_FORMAT_SHORT: Breve
+  DATE_FORMAT_LONG: Lungo
+
+  BREADCRUMBS: Breadcrumbs
+  BREADCRUMBS_ENABLED: Stato
+  BREADCRUMBS_ENABLED_HELP: Consente la visualizzazione della posizione
+  BREADCRUMBS_HELP: Stampa il percorso in testa al documento
+  BREADCRUMBS_LINK: Collegamento breadcrumbs
+  BREADCRUMBS_LINK_HELP: Ogni singola posizione si collega alla pagina online originale.
+
+  BRANCH: Ramo
+  BRANCH_ENABLED: Stato top-down
+  BRANCH_ENABLED_HELP: Aggiunge tutte le pagine discendenti dalla pagina corrente. La selezione viene effettuata solo dall'alto verso il basso.
+
+  PAGE_BREAK: Interruzione di pagina
+  PAGE_BREAK_HELP: Aggiunge un'interruzione di pagina prima di una pagina
+
+  # JQUERY
+  TAB_JQUERY: jQuery
+  JQUERY_CONFIRM: jQuery Confirm v3
+  THEME: Tema
+  LIGHT: Light
+  DARK: Dark
+  MODERN: Modern
+  SUPERVAN: Supervan
+  MATERIAL: Material
+  BOOTSTRAP: Bootstrap
+
+  BTN_EXPORT: Testo del pulsante di esportazione
+  BTN_EXPORT_PLACEHOLDER: "es. Crea"
+  BTN_CANCEL: Tasto del pulsante di annullamento
+  BTN_CANCEL_PLACEHOLDER: "es. Cancel"
+  BTN_EXPORT_COLOR: Colore del pulsante di esportazione
+  DEFAULT: Predefinito
+  BLUE: Blu
+  GREEN: Verde
+  RED: Rosso
+  ORANGE: Arancione
+  PURPLE: Viola
+  DARK: Nero
+  GRAY: Grigio
+  BTN_CANCEL_COLOR: Colore del pulsante di annullamento
+
+  # FINE BLUEPRINTS.YAML
+
+
+
+  # INIZIO FILE PHP
+  
+  AN_ERROR_OCCURRED: Si è verificato un errore
+  BUTTON_ATTACH_TEXT: Scaricato
+  BUTTON_CANCEL_TEXT: Annulla
+  BUTTON_EXPORT_TEXT: Crea
+  BUTTON_INLINE_TEXT: Letto in linea
+  COLLECT_BRANCH: Includere rami dipendenti
+  COMPLETE_EXPORT: Esportazione completa del documento
+  CREATION_FAILED: Creazione non riuscita
+  DOCUMENT_TYPE: Tipo documento
+  DRAFT: BOZZA
+  INVALID_SECURITY_TOKEN_TEXT: "Aggiorna la pagina con <b>F5</b> e riprova"
+  INVALID_SECURITY_TOKEN_TITLE: Token di sicurezza non valido
+  NOT_YET_MANAGED: non ancora gestito!
+  SINGLE_OR_BRANCH_EXPORT: Esportazione singola o ramificata
+  WAIT_FOR_FUTURE_UPDATES: Attendere i futuri aggiornamenti.
+  #YOUR_DOCUMENT_IS_READY_FOR: Il file %1 è pronto per essere...
+  YOUR_DOCUMENT_IS_READY_FOR: Il documento è pronto per essere...
+
+  # FINE FILE PHP
+  
+
+  BUTTON_TEXT: Testo
+  BUTTON_ICON: Icona
+
+  PREFACE_IMAGE: Stato immagine
+  PREFACE_IMAGE_HELP:  Visualizza la prima immagine della pagina. Utile se non inclusa nella stessa pagina.
+  CROPZOOM_WIDTH: Larghezza immagine
+  CROPZOOM_WIDTH_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
+  CROPZOOM_HEIGHT: Altezza immagine
+  CROPZOOM_HEIGHT_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.

@@ -1,95 +1,90 @@
 # English
 PLUGIN_SNAPPYGRAV:
-  BTN_PLUGIN: Plugin Button Text
-  ICN_PLUGIN: Plugin Button Icon
+
+  # START BLUEPRINTS.YAML
+  
+  # BASIS
+  TAB_BASIS: Basis
+
+  PDF_ENGINE_SECTION: PDF Engine
+  LIBRARY: 'Library <span style="color:red;">to install before using the plugin.</span><br/>Instructions are in the respective tabs.'
+  MPDF: mPDF
+  TCPDF: TCPDF
   WKHTMLTOPDF: WKhtmlTOpdf
-  WK_POSITION: Positioning under
-  WK_PLUGIN: Plugin
-  WK_OS: O.S.
-  WK_DATA: Data Folder
-  WK_PATH_RULES: 'Path Rules:<br/>- Under <b>Data</b> folder (eg <i>user/data/snappygrav/wkhtmltopdf-i386</i>). <span style="color:red;">In the next version it will be the default option, so binary files will no longer be provided. Each administrator will position his own binary file that would no longer be covered by subsequent updates.</span><br/>- Under <b>Plugins</b> (eg <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- Under <b>O.S.</b> (eg <i>/usr/local/bin/wkhtmltopdf</i>)<br/>In all cases, when <b>Path</b> is left blank, the respective examples are used as default values.'
-  WK_PATH: Path
-  WK_PATH_HELP: Path of Binary Wkhtmltopdf. You can leave it blank when your folder matches the examples in the Path Rules.
-  DATE_FORMAT: Date Format
-  SHORT: Short
-  LONG: Long
-  DEFAULT_TYPE: Default document type
-  AZW3: Azw3
-  EPUB: ePub
-  PDF: Pdf
-  BASICS: Basics
+    
+  CSS_SECTION: Cascading Style Sheets
   USE_BUILT_IN_CSS: Use Built in CSS
   USE_BUILT_IN_CSS_HELP: If enabled, Absolute URLs in the system.yaml must be set to yes
-
   CSS_TEXTAREA: Additional CSS
   CSS_TEXTAREA_PLACEHOLDER: Adding CSS
   CSS_TEXTAREA_HELP: Additional CSS placed after possible paper.css
+
+  PLUGIN_BUTTON: Plugin Button
+  BUTTON_TEXT: Text
+  BUTTON_TEXT_PLACEHOLDER: "eg. Export"
+  BUTTON_ICON: Icon
+  BUTTON_ICON_PLACEHOLDER: "eg. fa fa-download"
+
+  SECTION_BLOG_FOLDER: Blog Folder
+  BLOG_FOLDER: Slug
+  BLOG_FOLDER_HELP: Name of the blog folder without slash (either before or after)
+
+  SECTION_TIME: Execution Time
+  SET_TIME_LIMIT: Set Time Limit
+  SET_TIME_LIMIT_HELP: Limits the maximum execution time
+
+  # MPDF
+  INSTALLATION: Installation
   
-  PREFACE: Preface
-  
-  PREFACE_IMAGE: Image Status
-  PREFACE_IMAGE_HELP:  Displays the first image of the page. Useful if not included on the same page.
-  CROPZOOM_WIDTH: Image Width
-  CROPZOOM_WIDTH_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
-  CROPZOOM_HEIGHT: Image Height
-  CROPZOOM_HEIGHT_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
-  
-  PREFACE_TITLE: Title Status
-  PREFACE_TITLE_HELP: Displays the title of the page. Useful if not included on the same page.
-  PREFACE_AUTHOR: Author Status
-  PREFACE_AUTHOR_HELP: View the author of the page. Useful if not included on the same page.
-  PREFACE_DATE: Date Status
-  PREFACE_DATE_HELP: Displays the date of the page. Useful if not included on the same page.
-  BREADCRUMBS: Breadcrumbs
-  BREADCRUMBS_ENABLED: Status
-  BREADCRUMBS_ENABLED_HELP: Enables the display of crumbs.
-  BREADCRUMBS_LINK: Link
-  BREADCRUMBS_LINK_HELP: Every single crumb links to the original online page.
-  BRANCH: Branch
-  BRANCH_ENABLED: Top-Down Status
-  BRANCH_ENABLED_HELP: Adds all descending pages from the current page. The selection is made from just the top down.
-  PAGE_BREAK: Page Break
-  PAGE_BREAK_HELP: Adds a page-break before a page
-  JQUERY_CONFIRM: jQuery Confirm v3
-  THEME: Theme
-  LIGHT: Light
-  DARK: Dark
-  MODERN: Modern
-  SUPERVAN: Supervan
-  MATERIAL: Material
-  BOOTSTRAP: Bootstrap
-  BTN_EXPORT: Export Button Text
-  BTN_EXPORT_COLOR: Export Button Color
-  BTN_CANCEL: Cancel Button Text
-  BTN_CANCEL_COLOR: Cancel Button Color
-  DEFAULT: Default
-  BLUE: Blue
-  GREEN: Green
-  RED: Red
-  ORANGE: Orange
-  PURPLE: Purple
-  DARK: Dark
-  GRAY: Gray
-  DOCUMENT_TYPE: Document Type
+  MPDF_SPACER: 'Before starting, go to <em>user/plugins/snappygrav/</em> and run <code>composer require mpdf/mpdf</code>'
+
+  SHOWWATERMARKTEXT: Show Watermark Text
+  SHOWWATERMARKTEXT_HELP: Specifies whether or not to show/print the watermark text on each page.
+  SETWATERMARKTEXT: Set Watermark Text
+  SETWATERMARKTEXT_HELP: Set the watermark text you want to show/print. If empty, the default value is DRAFT.
+  SETWATERMARKTEXT_PLACEHOLDER: "eg. DRAFT"
+  WATERMARKTEXTALPHA: Watermark Text Transparency
+  WATERMARKTEXTALPHA_HELP: Specifies the transparency (alpha value) to use for the watermark text on each page. If empty, the default value is 0.2
+
+  # TCPDF
+  TCPDF_SPACER: 'Before starting, go to <em>user/plugins/snappygrav/</em> and run <code>composer require tecnickcom/tcpdf</code>'
   OPTIONS: Options
-  AN_ERROR_OCCURRED: "An error occurred"
-  CREATION_FAILED: Creation failed
-  NOT_YET_MANAGED: not yet managed!
-  WAIT_FOR_FUTURE_UPDATES: Wait for future updates.
-  INVALID_SECURITY_TOKEN_TITLE: "Invalid Security Token"
-  INVALID_SECURITY_TOKEN_TEXT: "Refresh page with <b>F5</b> and try again"
-  YOUR_DOCUMENT_IS_READY_FOR: Your %1 is ready for...
-  COLLECT_BRANCH: Include dependent branches
-  COMPLETE_EXPORT: Complete Document Export 
-  SINGLE_OR_BRANCH_EXPORT: Single or Branch Export
-  BUTTON_EXPORT_TEXT: Create
-  BUTTON_CANCEL_TEXT: Cancel
-  BUTTON_INLINE_TEXT: Reading inline
-  BUTTON_ATTACH_TEXT: Downloading
-  SLUG_BLOG: Folder blog
-  SLUG_BLOG_HELP: Name of the blog folder without slash (either before or after)
+  
+  SET_PRINT_HEADER: Set Print Header
+  SET_PRINT_HEADER_HELP: Set a flag to print page header.
+
+  SET_PRINT_FOOTER: Set Print Footer
+  SET_PRINT_FOOTER_HELP: Set a flag to print page footer.
+
+  # WKHTMLTOPDF
+  WKHTMLTOPDF_SPACER: 'Before starting, go to <b>user/plugins/snappygrav/</b> and run:<br/><code>composer require knplabs/knp-snappy</code><br/><code>composer require h4cc/wkhtmltopdf-i386</code> or <code>wkhtmltopdf-amd64</code> or other.'
+  
+  WK_BINARY_FILE_POSITION: Binary File Position
+  WK_POSITION: Position
+  WK_DATA: Data
+  WK_PLUGIN: SnappyGrav
+  WK_OS: O.S.
+  WK_PATH_RULES: 'Default values based on <b>Position</b>:<br/>- <b>Data</b>: <i>user/data/snappygrav/wkhtmltopdf-i386</i>).<br/>- <b>SnappyGrav</b>: <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- <b>Operating System</b>: <i>/usr/local/bin/wkhtmltopdf</i>)<br/>When <b>Path</b> is left blank, the respective default values are used.'
+ 
+  WK_PATH: Path
+  WK_PATH_HELP: Path of Binary Wkhtmltopdf. You can leave it blank when your folder matches the examples in the Path Rules.
+  WK_PATH_PLACEHOLDER: "eg. vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386"
+
   MONOCHROME_PRINTOUT: Monochrome printout
   MONOCHROME_PRINTOUT_HELP: PDF will be generated in grayscale if true
+
+  PRINT_MEDIA_TYPE: Print Media Type
+  PRINT_MEDIA_TYPE_HELP: Use print media-type instead of screen (default). The snappygrav/assets/css/ directory contains the paper.css file where you can enter the properties of the elements based on the @media rule you want.
+
+  TOC: Table Of Contents
+  TOC_HELP: A page in the head containing a table of contents is added (default disabled)
+
+  ZOOM_FACTOR: Zoom Factor
+  ZOOM_FACTOR_HELP: Use this zoom factor (default 1)
+
+  # COMMON
+  TAB_COMMON: Common
+
   BOTTOM_MARGIN: Bottom Margin
   BOTTOM_MARGIN_HELP: Set the page bottom margin (default 10mm)
   LEFT_MARGIN: Left Margin
@@ -98,10 +93,15 @@ PLUGIN_SNAPPYGRAV:
   RIGHT_MARGIN_HELP: Set the page right margin (default 10mm)
   TOP_MARGIN: Top Margin
   TOP_MARGIN_HELP: Set the page top margin (default 10mm)
+
   PAGE_ORIENTATION: Page Orientation
   PAGE_ORIENTATION_HELP: Set orientation to Landscape or Portrait
   LANDSCAPE: Landscape
   PORTRAIT: Portrait
+
+  ENCODING: Encoding
+  ENCODING_PLACEHOLDER: "eg. utf-8"
+
   PAGE_SIZE: Page Size
   PAGE_SIZE_HELP: Set paper size to: A4, Letter, etc.
   EXECUTIVE: Executive
@@ -110,11 +110,94 @@ PLUGIN_SNAPPYGRAV:
   LEGAL: Legal
   LETTER: Letter
   TABLOID: Tabloid
+
   DOCUMENT_TITLE: Document Title
   DOCUMENT_TITLE_HELP: Puts the property Title in the pdf document
-  ZOOM_FACTOR: Zoom Factor
-  ZOOM_FACTOR_HELP: Use this zoom factor (default 1)
-  PRINT_MEDIA_TYPE: Print Media Type
-  PRINT_MEDIA_TYPE_HELP: Use print media-type instead of screen (default). The snappygrav/assets/css/ directory contains the paper.css file where you can enter the properties of the elements based on the @media rule you want.
-  SET_TIME_LIMIT: Set Time Limit
-  SET_TIME_LIMIT_HELP: Limits the maximum execution time
+
+  # METADATA
+  TAB_METADATA: Metadata
+
+  PREFACE: Preface
+  PREFACE_TITLE: Title Status
+  PREFACE_TITLE_HELP: Displays the title of the page. Useful if not included on the same page.
+  PREFACE_AUTHOR: Author Status
+  PREFACE_AUTHOR_HELP: View the author of the page. Useful if not included on the same page.
+  PREFACE_DATE: Date Status
+  PREFACE_DATE_HELP: Displays the date of the page. Useful if not included on the same page.  
+  DATE_FORMAT: Date Format
+  DATE_FORMAT_SHORT: Short
+  DATE_FORMAT_LONG: Long
+
+  BREADCRUMBS: Breadcrumbs
+  BREADCRUMBS_ENABLED: Status
+  BREADCRUMBS_ENABLED_HELP: Enables the display of crumbs.
+  BREADCRUMBS_LINK: Link
+  BREADCRUMBS_LINK_HELP: Every single crumb links to the original online page.
+
+  BRANCH: Branch
+  BRANCH_ENABLED: Top-Down Status
+  BRANCH_ENABLED_HELP: Adds all descending pages from the current page. The selection is made from just the top down.
+
+  PAGE_BREAK: Page Break
+  PAGE_BREAK_HELP: Adds a page-break before a page
+
+  # JQUERY
+  TAB_JQUERY: jQuery
+  JQUERY_CONFIRM: jQuery Confirm v3
+  THEME: Theme
+  LIGHT: Light
+  DARK: Dark
+  MODERN: Modern
+  SUPERVAN: Supervan
+  MATERIAL: Material
+  BOOTSTRAP: Bootstrap
+
+  BTN_EXPORT: Export Button Text
+  BTN_EXPORT_PLACEHOLDER: "eg. Create"
+  BTN_CANCEL: Cancel Button Text
+  BTN_CANCEL_PLACEHOLDER: "eg. Cancel"
+  BTN_EXPORT_COLOR: Export Button Color
+  DEFAULT: Default
+  BLUE: Blue
+  GREEN: Green
+  RED: Red
+  ORANGE: Orange
+  PURPLE: Purple
+  DARK: Dark
+  GRAY: Gray  
+  BTN_CANCEL_COLOR: Cancel Button Color
+
+  # END BLUEPRINTS.YAML
+
+
+
+  # START PHP FILES
+  
+  AN_ERROR_OCCURRED: "An error occurred"
+  BUTTON_ATTACH_TEXT: Downloading
+  BUTTON_CANCEL_TEXT: Cancel
+  BUTTON_EXPORT_TEXT: Create
+  BUTTON_INLINE_TEXT: Reading inline
+  COLLECT_BRANCH: Include dependent branches
+  COMPLETE_EXPORT: Complete Document Export 
+  CREATION_FAILED: Creation failed
+  DOCUMENT_TYPE: Document Type
+  DRAFT: DRAFT
+  INVALID_SECURITY_TOKEN_TEXT: "Refresh page with <b>F5</b> and try again"
+  INVALID_SECURITY_TOKEN_TITLE: "Invalid Security Token"
+  NOT_YET_MANAGED: not yet managed!
+  SINGLE_OR_BRANCH_EXPORT: Single or Branch Export
+  WAIT_FOR_FUTURE_UPDATES: Wait for future updates.
+  #YOUR_DOCUMENT_IS_READY_FOR: Your %1 is ready for...
+  YOUR_DOCUMENT_IS_READY_FOR: Your document is ready for...
+
+  # END PHP FILES
+
+ 
+  
+  PREFACE_IMAGE: Image Status
+  PREFACE_IMAGE_HELP:  Displays the first image of the page. Useful if not included on the same page.
+  CROPZOOM_WIDTH: Image Width
+  CROPZOOM_WIDTH_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
+  CROPZOOM_HEIGHT: Image Height
+  CROPZOOM_HEIGHT_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.

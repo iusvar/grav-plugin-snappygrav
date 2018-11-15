@@ -3,7 +3,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 use Grav\Common\Utils;
-use Grav\Plugin\SnappyManager\SnappyManager;
+use Grav\Plugin\SnappyManager;
 
 
 class SnappyGravPlugin extends Plugin
@@ -45,13 +45,14 @@ class SnappyGravPlugin extends Plugin
      */
     public function onPluginsInitialized()
     {
-        if ($this->isAdmin()) {
+        /*if ($this->isAdmin()) {
             return;
-        }
+        }*/
 
         require_once __DIR__ . '/vendor/autoload.php';
 
         $this->enable([
+            //'onOutputGenerated' => ['onOutputGenerated'],
             'onTwigInitialized'     => ['onTwigInitialized', 0],
             'onPageInitialized'     => ['onPageInitialized', 1001],
             'onTwigSiteVariables'   => ['onTwigSiteVariables', 0],
@@ -62,6 +63,12 @@ class SnappyGravPlugin extends Plugin
         $this->snappymanager->json_response = [];
         $this->grav['snappymanager'] = $this->snappymanager;
     }
+
+    /*public function onOutputGenerated()
+    {
+      $page = $this->grav['page'];
+      $this->grav['debugger']->addMessage( $page );
+    }*/
 
     /**
      * Add current directory to Twig lookup paths.
@@ -149,27 +156,28 @@ class SnappyGravPlugin extends Plugin
         $snappy_nonce   = 'snappy-nonce:'.$nonce;
         
         $branch         = $this->config->get('plugins.snappygrav.branch_enabled');
-        $default_type   = $this->config->get('plugins.snappygrav.default_type');
+//$default_type   = $this->config->get('plugins.snappygrav.default_type');
         $theme          = $this->config->get('plugins.snappygrav.theme');
 
-        $type = 'type:' . $default_type . DS;
+//$type = 'type:' . $default_type . DS;
         $branch_value = 'branch:'.($branch ? 'yes' : 'no') . DS;
         $branch_btn_text = $this->lang->translate('PLUGIN_SNAPPYGRAV.COLLECT_BRANCH');
 
         $checked = ($branch ? 'checked' : '');
 
-        $btn_data       = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $type . $snappy_nonce;
+//$btn_data       = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $type . $snappy_nonce;
+        $btn_data       = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $snappy_nonce;
 
         $btn_title      = $this->lang->translate('PLUGIN_SNAPPYGRAV.COMPLETE_EXPORT');
         $type_label     = $this->lang->translate('PLUGIN_SNAPPYGRAV.DOCUMENT_TYPE');
         $option_label   = $this->lang->translate('PLUGIN_SNAPPYGRAV.OPTIONS');
 
-        $azw3_checked   = ($default_type == 'azw3' ? 'checked' : '');
-        $epub_checked   = ($default_type == 'epub' ? 'checked' : '');
-        $pdf_checked    = ($default_type == 'pdf' ? 'checked' : '');
+//$azw3_checked   = ($default_type == 'azw3' ? 'checked' : '');
+//$epub_checked   = ($default_type == 'epub' ? 'checked' : '');
+//$pdf_checked    = ($default_type == 'pdf' ? 'checked' : '');
 
         $btn_content = '';
-        $btn_content .= '<fieldset>';
+/*        $btn_content .= '<fieldset>';
         $btn_content .= '<legend>'.$type_label.'</legend>';
         $btn_content .= '<input id=\"azw3\" value=\"azw3\" '.$azw3_checked.' type=\"radio\" name=\"radio-input\" disabled=\"disabled\" />';
         $btn_content .= '<label for=\"azw3\">Azw3</label>';
@@ -178,7 +186,7 @@ class SnappyGravPlugin extends Plugin
         $btn_content .= '<input id=\"pdf\" value=\"pdf\" '.$pdf_checked.' type=\"radio\" name=\"radio-input\" />';
         $btn_content .= '<label for=\"pdf\">Pdf</label>';
         $btn_content .= '</fieldset>';
-
+*/
         $current_theme = $this->grav['themes']->current();
 
         if( $current_theme=='learn2' || $current_theme=='learn3' || $current_theme=='learn2-git-sync' ){
@@ -195,10 +203,10 @@ class SnappyGravPlugin extends Plugin
         $btn_title .= '<input id=\"export-pdf\" type=\"hidden\">';
         $btn_title .= '<input id=\"export-filename\" type=\"hidden\">';
 
-        $icn_plugin     = $this->config->get('plugins.snappygrav.icn_plugin');
-        $button_icon    = ( empty($icn_plugin) ? '' : '<i class="fa '.$icn_plugin.'" aria-hidden="true"></i>' );
-        $btn_plugin     = $this->config->get('plugins.snappygrav.btn_plugin');
-        $button_text    = ( empty($btn_plugin) ? '' : $btn_plugin );
+        $button_icon     = $this->config->get('plugins.snappygrav.button_icon');
+        $button_icon    = ( empty($button_icon) ? '' : '<i class="'.$button_icon.'" aria-hidden="true"></i>' );
+        $button_text     = $this->config->get('plugins.snappygrav.button_text');
+        $button_text    = ( empty($button_text) ? '' : $button_text );
         $space          = ( !empty($button_icon) && !empty($button_text) ? '&nbsp;' : '' );
         
         $btn_export_text    = $this->lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_EXPORT_TEXT');

@@ -1,10 +1,12 @@
-# v1.9.0
-## 11/12/2018
+# v1.9.0-beta.1
+## 11/15/2018
 
 1. [](#new)
     * Added a text area to insert additional CSS.
     * Added option regarding inserting the first image of the page. The width and height can be changed.
-    * Added option regarding the placement of the wkhtmltopdf library in the data folder
+    * Added option regarding the placement of the wkhtmltopdf library in the data folder. Useful for administrators because future plugin updates do not overwrite the binary file
+    * Making snappygrav work with other plugins. Thanks @hughbris [#39](https://github.com/iusvar/grav-plugin-snappygrav/issues/39)
+    * Added ability to use mPDF and TCPDF libraries.
 
 # v1.8.0
 ## 09/27/2018

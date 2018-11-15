@@ -5,75 +5,34 @@ css_textarea: ".title {color:blue;}" # Additional CSS
 wk_position: plugin             # The options are: data, plugin, os (default: plugin)
 wk_path: ''                     # Path of the wkhtmltopdf program
 default_type: pdf               # Preferred document format.
-slug_blog: blog                 # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
+blog_folder: blog               # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
 set_time_limit: 60              # Limits the maximum execution time
 preface_title: true             # When true prints title (default = false)
 preface_author: true            # When true prints author (default = false)
 preface_date: true              # When true prints date (default = false)
-
 breadcrumbs_enabled: true       # When true prints breadcrumbs (default = true)
 breadcrumbs_link: true          # When true prints link to the online document (default = true)
-
 branch_enabled: true            # When true print also prints the children of the current page (default = true)
 page_break: true                # When true adds a page-break before a page
-#send_email: false               # When true sends the document just created by email (default = false)
-
 date_format: short              # Gets the date format (short or long) from the configuration of the file system.yaml
 theme: light                    # jQuery Confirm v3: theme
 btn_export: Create              # Button text to confirm
 btn_cancel: Cancel              # Button text to cancel
 btn_export_color: green         # Background color of the button to confirm
 btn_cancel_color: gray          # Background color of the button to cancel
-
-btn_plugin: Export              # Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present.
-icn_plugin: fa-download         # Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present.
+button_text: Export             # Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present.
+button_icon: 'fa fa-download'   # Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present.
 btn_plugin_color: '#ffffff'     # Color of the plugin button text
 btn_plugin_bg_color: '#63e010'  # Background color of the plugin button text
-btn_plugin_hover_color: '#ffffff'   # Color of the plugin button text when mouse over
-btn_plugin_hover_bg_color: '#eb0c0c'    # Background color of the plugin button text when mouse over
-
-#allow <path>                   Allow the file or files from the specified folder to be loaded (repeatable)
-#collate                        Collate when printing multiple copies
-#cookie <name> <value>          Set an additional cookie (repeatable)
-#cookie-jar <path>              Read and write cookies from and to the supplied cookie jar file
-#copies <number>                Number of copies to print into the pdf file (default 1)
-#custom-header <name> <value>   Set an additional HTTP header (repeatable)
-#debug-javascript               Show javascript debugging output
-#disable-javascript             Do not allow web pages to run javascript
-#disallow-local-file-access     Do not allowed conversion of a local file to read in other local files, unless explecitily allowed with --allow
-#dpi <dpi>                      Change the dpi explicitly (this has no effect on X11 based systems)
-#enable-plugins                 Enable installed plugins (such as flash
-#encoding <encoding>            Set the default text encoding, for input
-#extended-help                  Display more extensive help, detailing less common command switches
+btn_plugin_hover_color: '#ffffff' # Color of the plugin button text when mouse over
+btn_plugin_hover_bg_color: '#eb0c0c' # Background color of the plugin button text when mouse over
+encoding: 'utf-8'
 grayscale: false                 # PDF will be generated in grayscale if true (default = false)
-#help                           Display help
-#htmldoc                        Output program html help
-#ignore-load-errors             Ignore pages that claimes to have encountered an error during loading
-#lowquality                     Generates lower quality pdf/ps. Useful to shrink the result document space
-#manpage                        Output program man page
 margin_bottom: 10               # <unitreal> Set the page bottom margin (default 10mm)
 margin_left: 10                 # <unitreal> Set the page left margin (default 10mm)
 margin_right: 10                # <unitreal> Set the page right margin (default 10mm)
 margin_top: 10                  # <unitreal> Set the page top margin (default 10mm)
-#minimum-font-size <int>        Minimum font size (default 5)
-#no-background                  Do not print background
-orientation: Portrait           # Set orientation to Landscape or Portrait
-#page-height <unitreal>         Page height (default unit millimeter)
-#page_size: A4                   # <size> Set paper size to: A4, Letter, etc.
-#page-width <unitreal>          Page width  (default unit millimeter)
-#password <password>            HTTP Authentication password
-#post <name> <value>            Add an additional post field (repeatable)
-#post-file <name> <path>        Post an additional file (repeatable)
-#proxy <proxy>                  Use a proxy
-#quiet                          Be less verbose
-#read-args-from-stdin           Read command line arguments from stdin
-#readme                         Output program readme
-#redirect-delay <msec>          Wait some milliseconds for js-redirects (default 200)
-#stop-slow-scripts              Stop slow running javascripts
-#title                          # <text> The title of the generated pdf file (The title of the first document is used if not specified)
+orientation: portrait           # Set orientation to Landscape or Portrait
 title: true                     # I prefer True or False, getting title from site page
-#user-style-sheet <url>         Specify a user style sheet, to load with every page
-#username <username>            HTTP Authentication username
-#version                        Output version information an exit
 zoom: 1                         # Use this zoom factor (default 1) <float>
 print_media_type: true          # When true, it uses print-media-type option, otherwise it uses no-print-media-type option (default true)

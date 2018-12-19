@@ -1,8 +1,12 @@
 # v1.9.0-beta.2
 ## 12/19/2018
 
+1. [](#new)
+    * local language for the export button. Thanks @algofribaz [#41](https://github.com/iusvar/grav-plugin-snappygrav/issues/41)
+    * Different title for single page or entire site. Credit as above
 1. [](#bugfix)
     * Added a minimum autoload.php to avoid error. Thanks @dwitzig [#40](https://github.com/iusvar/grav-plugin-snappygrav/issues/40)
+
 
 # v1.9.0-beta.1
 ## 11/15/2018

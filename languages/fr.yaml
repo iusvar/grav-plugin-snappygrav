@@ -7,7 +7,7 @@ PLUGIN_SNAPPYGRAV:
   TAB_BASIS: Base
 
   PDF_ENGINE_SECTION: Moteur PDF
-  LIBRARY: 'Bibliothèque <span style="color:red;"> à installer avant d'utiliser le plugin. </span><br/>Les instructions figurent dans les onglets respectifs.'
+  LIBRARY: Bibliothèque <span style="color:red;"> à installer avant d'utiliser le plugin. </span><br/>Les instructions figurent dans les onglets respectifs.
   MPDF: mPDF
   TCPDF: TCPDF
   WKHTMLTOPDF: WKhtmlTOpdf

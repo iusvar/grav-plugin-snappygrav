@@ -1,0 +1,204 @@
+# Français
+PLUGIN_SNAPPYGRAV:
+
+  # COMMENCER BLUEPRINTS.YAML
+  
+  # BASE
+  TAB_BASIS: Base
+
+  PDF_ENGINE_SECTION: Moteur PDF
+  LIBRARY: 'Bibliothèque <span style="color:red;"> à installer avant d'utiliser le plugin. </span><br/>Les instructions figurent dans les onglets respectifs.'
+  MPDF: mPDF
+  TCPDF: TCPDF
+  WKHTMLTOPDF: WKhtmlTOpdf
+    
+  CSS_SECTION: Feuilles de style en cascade
+  USE_BUILT_IN_CSS: Utiliser CSS intégré
+  USE_BUILT_IN_CSS_HELP: Si activé, les URL absolues dans le fichier system.yaml doivent être définies sur yes
+  CSS_TEXTAREA: CSS supplémentaire
+  CSS_TEXTAREA_PLACEHOLDER: Ajout de CSS
+  CSS_TEXTAREA_HELP: CSS supplémentaire placé après possible paper.css
+
+  PLUGIN_BUTTON: Bouton plugin
+  EXPORT_BUTTON_ICON: Icône
+  #EXPORT_BUTTON_ICON_PLACEHOLDER: eg. fa fa-download
+
+  SECTION_BLOG_FOLDER: Dossier de blog
+  BLOG_FOLDER: Slug
+  BLOG_FOLDER_HELP: Nom du dossier du blog sans barre oblique (avant ou après)
+
+  SECTION_TIME: Temps d'exécution
+  SET_TIME_LIMIT: Fixer une limite de temps
+  SET_TIME_LIMIT_HELP: Limite le temps d'exécution maximum
+
+
+  # MPDF
+  INSTALLATION: Installation
+  
+  MPDF_SPACER: 'Avant de commencer, allez à <em>user/plugins/snappygrav/</em> et exécuter <code>composer require mpdf/mpdf</code>'
+
+  SHOWWATERMARKTEXT: Afficher le texte en filigrane
+  SHOWWATERMARKTEXT_HELP: Indique si le texte du filigrane doit être affiché/imprimé sur chaque page.
+  SETWATERMARKTEXT: Définir le texte du filigrane
+  SETWATERMARKTEXT_HELP: Définissez le texte du filigrane que vous souhaitez afficher/imprimer. Si vide, la valeur par défaut est DRAFT.
+  SETWATERMARKTEXT_PLACEHOLDER: "p.e.: ÉBAUCHE"
+  WATERMARKTEXTALPHA: Transparence du texte en filigrane
+  WATERMARKTEXTALPHA_HELP: Spécifie la transparence (valeur alpha) à utiliser pour le filigrane Si vide, la valeur par défaut est 0.2
+
+  # TCPDF
+  TCPDF_SPACER: 'Avant de commencer, allez à <em>user/plugins/snappygrav/</em> et exécuter <code>composer require tecnickcom/tcpdf</code>'
+  OPTIONS: Options
+  
+  SET_PRINT_HEADER: Définir l'en-tête d'impression
+  SET_PRINT_HEADER_HELP: Définir un drapeau pour imprimer en-tête de page.
+
+  SET_PRINT_FOOTER: Définir le pied de page d'impression
+  SET_PRINT_FOOTER_HELP: Définir un drapeau pour imprimer le pied de page.
+
+  # WKHTMLTOPDF
+  WKHTMLTOPDF_SPACER: 'Avant de commencer, allez à <b>user/plugins/snappygrav/</b> et exécuter:<br/><code>composer require knplabs/knp-snappy</code><br/><code>composer require h4cc/wkhtmltopdf-i386</code> ou <code>wkhtmltopdf-amd64</code> ou autre.'
+  
+  WK_BINARY_FILE_POSITION: Position du fichier binaire
+  WK_POSITION: Position
+  WK_DATA: Data
+  WK_PLUGIN: SnappyGrav
+  WK_OS: S.O.
+  WK_PATH_RULES: 'Les valeurs par défaut basées sur <b>Position</b>:<br/>- <b>Data</b>: <i>user/data/snappygrav/wkhtmltopdf-i386</i>).<br/>- <b>SnappyGrav</b>: <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- <b>Système opérateur</b>: <i>/usr/local/bin/wkhtmltopdf</i>)<br/>Lorsque <b>Chemin</b> est vide, les valeurs par défaut respectives sont utilisées.'
+ 
+  WK_PATH: Chemin
+  WK_PATH_HELP: Chemin de binaire Wkhtmltopdf. Vous pouvez le laisser vide lorsque votre dossier correspond aux exemples des règles de chemin d'accès.
+  WK_PATH_PLACEHOLDER: "p.e.: vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386"
+
+  MONOCHROME_PRINTOUT: Impression monochrome
+  MONOCHROME_PRINTOUT_HELP: PDF sera généré en niveaux de gris si vrai
+
+  PRINT_MEDIA_TYPE: Type de support d'impression
+  PRINT_MEDIA_TYPE_HELP: Utilisez le type de support d'impression au lieu de l'écran (par défaut). Le répertoire snappygrav/assets/css/ contient le fichier paper.css où vous pouvez entrer les propriétés des éléments en fonction de la règle @media souhaitée.
+
+  TOC: Table des matières
+  TOC_HELP: Une page dans l'en-tête contenant une table des matières est ajoutée (désactivée par défaut)
+
+  ZOOM_FACTOR: Facteur de zoom
+  ZOOM_FACTOR_HELP: Utiliser ce facteur de zoom (1 par défaut)
+
+  # COMMON
+  TAB_COMMON: Commun
+
+  BOTTOM_MARGIN: Marge inférieure
+  BOTTOM_MARGIN_HELP: Définir la marge inférieure de la page (par défaut 10mm)
+  LEFT_MARGIN: Marge de gauche
+  LEFT_MARGIN_HELP: Définir la marge gauche de la page (10mm par défaut)
+  RIGHT_MARGIN: Marge droite
+  RIGHT_MARGIN_HELP: Définir la marge droite de la page (10mm par défaut)
+  TOP_MARGIN: Marge supérieure
+  TOP_MARGIN_HELP: Définir la marge supérieure de la page (10 mm par défaut)
+
+  PAGE_ORIENTATION: Orientation de la page
+  PAGE_ORIENTATION_HELP: Définir l'orientation sur Paysage ou Portrait
+  LANDSCAPE: Paysage
+  PORTRAIT: Portrait
+
+  ENCODING: Codage
+  ENCODING_PLACEHOLDER: "p.e.: utf-8"
+
+  PAGE_SIZE: Taille de la page
+  PAGE_SIZE_HELP: Définissez le format de papier sur: A4, Lettre, etc.
+  EXECUTIVE: Exécutive
+  FOLIO: Folio
+  LEDGER: Grand livre
+  LEGAL: légale
+  LETTER: Lettre
+  TABLOID: Tabloïde
+
+  DOCUMENT_TITLE: Titre du document
+  DOCUMENT_TITLE_HELP: Met la propriété Titre dans le document pdf
+
+  # METADATA
+  TAB_METADATA: Métadonnées
+
+  PREFACE: Préface
+  PREFACE_TITLE: Statut du titre
+  PREFACE_TITLE_HELP: Affiche le titre de la page. Utile si non inclus sur la même page.
+  PREFACE_AUTHOR: Statut de l'auteur
+  PREFACE_AUTHOR_HELP: Voir l'auteur de la page. Utile si non inclus sur la même page.
+  PREFACE_DATE: Statut du date
+  PREFACE_DATE_HELP: Affiche la date de la page. Utile si non inclus sur la même page.
+  DATE_FORMAT: Format de date
+  DATE_FORMAT_SHORT: Court
+  DATE_FORMAT_LONG: Longue
+
+  BREADCRUMBS: Chapelure
+  BREADCRUMBS_ENABLED: Statut
+  BREADCRUMBS_ENABLED_HELP: Permet l'affichage des miettes.
+  BREADCRUMBS_LINK: Lien
+  BREADCRUMBS_LINK_HELP: Chaque miette est liée à la page en ligne d'origine.
+
+  BRANCH: Branche
+  BRANCH_ENABLED: Statut descendant
+  BRANCH_ENABLED_HELP: Ajoute toutes les pages descendantes de la page en cours. La sélection se fait de haut en bas.
+
+  PAGE_BREAK: Saut de page
+  PAGE_BREAK_HELP: Ajoute un saut de page avant une page
+
+  # JQUERY
+  TAB_JQUERY: jQuery
+  JQUERY_CONFIRM: jQuery Confirm v3
+  THEME: Thème
+  LIGHT: Lumière
+  DARK: Foncée
+  MODERN: Moderne
+  SUPERVAN: Supervan
+  MATERIAL: Matériel
+  BOOTSTRAP: Bootstrap
+
+  BTN_EXPORT: Texte du bouton d'exportation
+  BTN_EXPORT_PLACEHOLDER: "p.e: Créer"
+  BTN_CANCEL: Texte du bouton d'annuler
+  BTN_CANCEL_PLACEHOLDER: "eg. Annuler"
+  BTN_EXPORT_COLOR: Couleur du bouton d'exportation
+  DEFAULT: Défaut
+  BLUE: Bleue
+  GREEN: Verte
+  RED: Rouge
+  ORANGE: Orange
+  PURPLE: Violette
+  DARK: Foncée
+  GRAY: Grise  
+  BTN_CANCEL_COLOR: Couleur du bouton d'annuler
+
+# FIN DE BLUEPRINTS.YAML
+
+
+
+  # COMMENCER FICHIERS PHP
+  
+  AN_ERROR_OCCURRED: Une erreur est survenue
+  BUTTON_ATTACH_TEXT: Téléchargement
+  BUTTON_CANCEL_TEXT: Annuler
+  BUTTON_EXPORT_TEXT: Créer
+  COLLECT_BRANCH: Inclure les branches dépendantes
+  COMPLETE_EXPORT: Exportation complète du document
+  CREATION_FAILED: La création a échoué
+  DOCUMENT_TYPE: Type de document
+  DRAFT: BROUILLON
+  INVALID_SECURITY_TOKEN_TEXT: "Actualiser la page avec <b>F5</b> et essayez à nouveau"
+  INVALID_SECURITY_TOKEN_TITLE: "Jeton de sécurité invalide"
+  NOT_YET_MANAGED: pas encore réussi!
+  SINGLE_OR_BRANCH_EXPORT: Exportation simple ou par branche
+  WAIT_FOR_FUTURE_UPDATES: Attendez les futures mises à jour.
+  YOUR_DOCUMENT_IS_READY_FOR: Votre document est prêt pour...
+
+  # FIN DES FICHIERS PHP
+
+ 
+  
+  PREFACE_IMAGE: Etat de l'image
+  PREFACE_IMAGE_HELP: Affiche la première image de la page. Utile si non inclus sur la même page.
+  CROPZOOM_WIDTH: Largeur de l'image
+  CROPZOOM_WIDTH_HELP: cropResize redimensionne une image à une taille plus petite ou plus grande en fonction de la largeur et de la hauteur.
+  CROPZOOM_HEIGHT: Hauteur de l'image
+  CROPZOOM_HEIGHT_HELP: cropResize redimensionne une image à une taille plus petite ou plus grande en fonction de la largeur et de la hauteur.
+
+  EXPORT_BUTTON: Exportation
+  ENTIRE_SITE_EXPORT: Exporter le site entier
+  THIS_PAGE_EXPORT: Exporter cette page

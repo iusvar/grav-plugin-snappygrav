@@ -4,8 +4,10 @@
 1. [](#new)
     * local language for the export button. Thanks @algofribaz [#41](https://github.com/iusvar/grav-plugin-snappygrav/issues/41)
     * Different title for single page or entire site. Credit as above
+    * Added French language
 1. [](#bugfix)
     * Added a minimum autoload.php to avoid error. Thanks @dwitzig [#40](https://github.com/iusvar/grav-plugin-snappygrav/issues/40)
+    * File fr.yaml in the right folder
 
 
 # v1.9.0-beta.1

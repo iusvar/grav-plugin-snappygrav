@@ -82,18 +82,12 @@ form:
               type: section
               title: PLUGIN_SNAPPYGRAV.PLUGIN_BUTTON
               underline: false
-              
-            button_text:
-              type: text
-              label: PLUGIN_SNAPPYGRAV.BUTTON_TEXT
-              size: small
-              placeholder: PLUGIN_SNAPPYGRAV.BUTTON_TEXT_PLACEHOLDER
 
-            button_icon:
+            export_button_icon:
               type: iconpicker
-              label: PLUGIN_SNAPPYGRAV.BUTTON_ICON
-              size: small
-              placeholder: PLUGIN_SNAPPYGRAV.BUTTON_ICON_PLACEHOLDER
+              label: PLUGIN_SNAPPYGRAV.EXPORT_BUTTON_ICON
+              size: large
+              #placeholder: PLUGIN_SNAPPYGRAV.EXPORT_BUTTON_ICON_PLACEHOLDER
 
             section_blog_folder:
               type: section

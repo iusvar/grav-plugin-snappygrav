@@ -144,49 +144,32 @@ class SnappyGravPlugin extends Plugin
         $cid        = "";
         $button_id  = "complete";
 
+        $btn_title = $this->lang->translate('PLUGIN_SNAPPYGRAV.ENTIRE_SITE_EXPORT');
         //single or branch
         if(!empty($route)){
             $esc_route  = 'route:'.str_replace('/','@',$route) . DS;
             $id = Utils::getNonce($route);
             $cid = "id:" . $id . DS;
             $button_id = "sg-".$id;
+            $btn_title = $this->lang->translate('PLUGIN_SNAPPYGRAV.THIS_PAGE_EXPORT');
         }
 
         $nonce          = Utils::getNonce('snappy-form');
         $snappy_nonce   = 'snappy-nonce:'.$nonce;
         
         $branch         = $this->config->get('plugins.snappygrav.branch_enabled');
-//$default_type   = $this->config->get('plugins.snappygrav.default_type');
         $theme          = $this->config->get('plugins.snappygrav.theme');
 
-//$type = 'type:' . $default_type . DS;
         $branch_value = 'branch:'.($branch ? 'yes' : 'no') . DS;
         $branch_btn_text = $this->lang->translate('PLUGIN_SNAPPYGRAV.COLLECT_BRANCH');
 
         $checked = ($branch ? 'checked' : '');
 
-//$btn_data       = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $type . $snappy_nonce;
         $btn_data       = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $snappy_nonce;
 
-        $btn_title      = $this->lang->translate('PLUGIN_SNAPPYGRAV.COMPLETE_EXPORT');
-        $type_label     = $this->lang->translate('PLUGIN_SNAPPYGRAV.DOCUMENT_TYPE');
         $option_label   = $this->lang->translate('PLUGIN_SNAPPYGRAV.OPTIONS');
 
-//$azw3_checked   = ($default_type == 'azw3' ? 'checked' : '');
-//$epub_checked   = ($default_type == 'epub' ? 'checked' : '');
-//$pdf_checked    = ($default_type == 'pdf' ? 'checked' : '');
-
         $btn_content = '';
-/*        $btn_content .= '<fieldset>';
-        $btn_content .= '<legend>'.$type_label.'</legend>';
-        $btn_content .= '<input id=\"azw3\" value=\"azw3\" '.$azw3_checked.' type=\"radio\" name=\"radio-input\" disabled=\"disabled\" />';
-        $btn_content .= '<label for=\"azw3\">Azw3</label>';
-        $btn_content .= '<input id=\"epub\" value=\"epub\" '.$epub_checked.' type=\"radio\" name=\"radio-input\" disabled=\"disabled\" />';
-        $btn_content .= '<label for=\"epub\">ePub</label>';
-        $btn_content .= '<input id=\"pdf\" value=\"pdf\" '.$pdf_checked.' type=\"radio\" name=\"radio-input\" />';
-        $btn_content .= '<label for=\"pdf\">Pdf</label>';
-        $btn_content .= '</fieldset>';
-*/
         $current_theme = $this->grav['themes']->current();
 
         if( $current_theme=='learn2' || $current_theme=='learn3' || $current_theme=='learn2-git-sync' ){
@@ -203,11 +186,11 @@ class SnappyGravPlugin extends Plugin
         $btn_title .= '<input id=\"export-pdf\" type=\"hidden\">';
         $btn_title .= '<input id=\"export-filename\" type=\"hidden\">';
 
-        $button_icon     = $this->config->get('plugins.snappygrav.button_icon');
-        $button_icon    = ( empty($button_icon) ? '' : '<i class="'.$button_icon.'" aria-hidden="true"></i>' );
-        $button_text     = $this->config->get('plugins.snappygrav.button_text');
-        $button_text    = ( empty($button_text) ? '' : $button_text );
-        $space          = ( !empty($button_icon) && !empty($button_text) ? '&nbsp;' : '' );
+        $export_button_icon     = $this->config->get('plugins.snappygrav.export_button_icon');
+        $export_button_icon    = ( empty($export_button_icon) ? '' : '<i class="'.$export_button_icon.'" aria-hidden="true"></i>' );
+
+        $export_button_text = $this->lang->translate('PLUGIN_SNAPPYGRAV.EXPORT_BUTTON');
+        $space          = ( !empty($export_button_icon) && !empty($export_button_text) ? '&nbsp;' : '' );
         
         $btn_export_text    = $this->lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_EXPORT_TEXT');
         $btn_export_color   = $this->config->get('plugins.snappygrav.btn_export_color');
@@ -217,7 +200,7 @@ class SnappyGravPlugin extends Plugin
         $btn_attach_text    = $this->lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_ATTACH_TEXT');
 
         $html = '
-            <button id="' . $button_id . '" class="export" type="button">' . $button_icon . $space . $button_text . '</button>
+            <button id="' . $button_id . '" class="export" type="button">' . $export_button_icon . $space . $export_button_text . '</button>
             <script>
 
                 $(document).ready(function() {
@@ -227,21 +210,11 @@ class SnappyGravPlugin extends Plugin
                             theme: "'.$theme.'",
                             closeIcon: true,
                             closeIconClass: "fa fa-close",
-                            icon: "fa fa-download",
+                            icon: "'.$export_button_icon.'",
                             useBootstrap: false,
                             title: "'.$btn_title.'",
                             content: "'.$btn_content.'",
                             buttons: {
-                                inline: {
-                                    text: "'.$btn_inline_text.'",
-                                    btnClass: "btn-blue",
-                                    action: function() {
-                                        var encoded_pdf = $("#export-pdf").val();
-                                        window.open("data:application/pdf, " + escape(atob(encoded_pdf)) );
-                                        //window.open("data:application/pdf;base64," + encoded_pdf );
-                                        return false;
-                                    }
-                                },
                                 attachment: {
                                     text: "'.$btn_attach_text.'",
                                     btnClass: "btn-purple",
@@ -302,7 +275,6 @@ class SnappyGravPlugin extends Plugin
                                             if (data.status == "success") {
                                                 $("#export-pdf").val(data.encoded_pdf);
                                                 $("#export-filename").val(data.filename);
-                                                //jc.buttons.inline.show();
                                                 jc.buttons.attachment.show();
                                                 jc.buttons.export.hide();
                                                 jc.setContent(data.message);
@@ -344,7 +316,6 @@ class SnappyGravPlugin extends Plugin
                                 }
                             },
                             onOpenBefore: function() {
-                                this.buttons.inline.hide();
                                 this.buttons.attachment.hide();
                             },
                             onOpen: function() {

@@ -20,8 +20,8 @@ PLUGIN_SNAPPYGRAV:
   CSS_TEXTAREA_HELP: CSS aggiuntivo posto dopo eventuale paper.css
 
   PLUGIN_BUTTON: Pulsante plugin
-  BUTTON_TEXT_PLACEHOLDER: "es. Esporta"
-  BUTTON_ICON_PLACEHOLDER: "es. fa fa-download"
+  EXPORT_BUTTON_ICON: Icona
+  #EXPORT_BUTTON_ICON_PLACEHOLDER: es. fa fa-download
 
   SECTION_BLOG_FOLDER: Cartella blog
   BLOG_FOLDER: Slug
@@ -42,6 +42,8 @@ PLUGIN_SNAPPYGRAV:
   SETWATERMARKTEXT: Imposta il testo della filigrana
   SETWATERMARKTEXT_HELP: Imposta il testo della filigrana che vuoi mostrare / stampare. Se vuoto, il valore di default è BOZZA.
   SETWATERMARKTEXT_PLACEHOLDER: "es. BOZZA"
+  WATERMARKTEXTALPHA: Trasparenza testo della filigrana
+  WATERMARKTEXTALPHA_HELP: Specifica la trasparenza (valore alfa) da utilizzare per il testo della filigrana su ciascuna pagina. Se vuoto, il valore predefinito è 0.2
   
   # TCPDF
   TCPDF_SPACER: 'Prima di iniziare, spostarsi in <b>user/plugins/snappygrav/</b> ed eseguire <code>composer require tecnickcom/tcpdf</code>'
@@ -62,6 +64,7 @@ PLUGIN_SNAPPYGRAV:
   WK_PLUGIN: SnappyGrav
   WK_OS: S.O.
   WK_PATH_RULES: "Valore predefiniti in base a <b>Posizione</b>:<br/>- <b>Data</b>: <i>user/data/snappygrav/wkhtmltopdf-i386</i><br/>- <b>SnappyGrav</b>: <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i><br/>- <b>Sistema Operativo</b>: <i>/usr/local/bin/wkhtmltopdf</i><br/>Quando <b>Percorso</b> viene lasciato vuoto, i rispettivi valori predefiniti vengono usati."
+
   WK_PATH: Percorso
   WK_PATH_HELP: Percorso del programma Wkhtmltopdf. Si può lasciare vuoto quando la propria cartella corrisponde agli esempi nelle Regole del percorso.
   WK_PATH_PLACEHOLDER: "es. vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386"
@@ -74,7 +77,7 @@ PLUGIN_SNAPPYGRAV:
 
   TOC: Sommario
   TOC_HELP: Viene aggiunta una pagina in testa contente un sommario (predefinito disabilitato)
-  
+
   ZOOM_FACTOR: Fattore di zoom
   ZOOM_FACTOR_HELP: Usa questo fattore di zoom (predefinito 1)
 
@@ -127,7 +130,6 @@ PLUGIN_SNAPPYGRAV:
   BREADCRUMBS: Breadcrumbs
   BREADCRUMBS_ENABLED: Stato
   BREADCRUMBS_ENABLED_HELP: Consente la visualizzazione della posizione
-  BREADCRUMBS_HELP: Stampa il percorso in testa al documento
   BREADCRUMBS_LINK: Collegamento breadcrumbs
   BREADCRUMBS_LINK_HELP: Ogni singola posizione si collega alla pagina online originale.
 
@@ -151,8 +153,8 @@ PLUGIN_SNAPPYGRAV:
 
   BTN_EXPORT: Testo del pulsante di esportazione
   BTN_EXPORT_PLACEHOLDER: "es. Crea"
-  BTN_CANCEL: Tasto del pulsante di annullamento
-  BTN_CANCEL_PLACEHOLDER: "es. Cancel"
+  BTN_CANCEL: Testo del pulsante di annullamento
+  BTN_CANCEL_PLACEHOLDER: "es. Annulla"
   BTN_EXPORT_COLOR: Colore del pulsante di esportazione
   DEFAULT: Predefinito
   BLUE: Blu
@@ -174,7 +176,6 @@ PLUGIN_SNAPPYGRAV:
   BUTTON_ATTACH_TEXT: Scaricato
   BUTTON_CANCEL_TEXT: Annulla
   BUTTON_EXPORT_TEXT: Crea
-  BUTTON_INLINE_TEXT: Letto in linea
   COLLECT_BRANCH: Includere rami dipendenti
   COMPLETE_EXPORT: Esportazione completa del documento
   CREATION_FAILED: Creazione non riuscita
@@ -185,14 +186,11 @@ PLUGIN_SNAPPYGRAV:
   NOT_YET_MANAGED: non ancora gestito!
   SINGLE_OR_BRANCH_EXPORT: Esportazione singola o ramificata
   WAIT_FOR_FUTURE_UPDATES: Attendere i futuri aggiornamenti.
-  #YOUR_DOCUMENT_IS_READY_FOR: Il file %1 è pronto per essere...
   YOUR_DOCUMENT_IS_READY_FOR: Il documento è pronto per essere...
 
   # FINE FILE PHP
-  
 
-  BUTTON_TEXT: Testo
-  BUTTON_ICON: Icona
+
 
   PREFACE_IMAGE: Stato immagine
   PREFACE_IMAGE_HELP:  Visualizza la prima immagine della pagina. Utile se non inclusa nella stessa pagina.
@@ -200,3 +198,7 @@ PLUGIN_SNAPPYGRAV:
   CROPZOOM_WIDTH_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
   CROPZOOM_HEIGHT: Altezza immagine
   CROPZOOM_HEIGHT_HELP: cropResize ridimensiona un'immagine in dimensioni più piccole o più grandi in base alla larghezza e all'altezza.
+
+  EXPORT_BUTTON: Esporta
+  ENTIRE_SITE_EXPORT: Esporta intero sito
+  THIS_PAGE_EXPORT: Esporta questa pagina

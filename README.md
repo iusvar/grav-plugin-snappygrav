@@ -118,7 +118,6 @@ You can do this configuration in the plugin's configuration.  Simply copy the `u
 | btn_cancel | Cancel |  | Button text to cancel |
 | btn_export_color | green |  | Background color of the button to confirm |
 | btn_cancel_color | gray |  | Background color of the button to cancel |
-| button_text | Export |  | Plugin button text. Nothing is printed if empty field. Make sure the text or icon is present. |
 | button_icon | fa-download |  | Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present. |
 | btn_plugin_color | '#ffffff' |  | Color of the plugin button text |
 | btn_plugin_bg_color | '#63e010' |  | Background color of the plugin button text |

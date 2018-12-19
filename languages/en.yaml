@@ -20,10 +20,8 @@ PLUGIN_SNAPPYGRAV:
   CSS_TEXTAREA_HELP: Additional CSS placed after possible paper.css
 
   PLUGIN_BUTTON: Plugin Button
-  BUTTON_TEXT: Text
-  BUTTON_TEXT_PLACEHOLDER: "eg. Export"
-  BUTTON_ICON: Icon
-  BUTTON_ICON_PLACEHOLDER: "eg. fa fa-download"
+  EXPORT_BUTTON_ICON: Icon
+  #EXPORT_BUTTON_ICON_PLACEHOLDER: eg. fa fa-download
 
   SECTION_BLOG_FOLDER: Blog Folder
   BLOG_FOLDER: Slug
@@ -32,6 +30,7 @@ PLUGIN_SNAPPYGRAV:
   SECTION_TIME: Execution Time
   SET_TIME_LIMIT: Set Time Limit
   SET_TIME_LIMIT_HELP: Limits the maximum execution time
+
 
   # MPDF
   INSTALLATION: Installation
@@ -173,11 +172,10 @@ PLUGIN_SNAPPYGRAV:
 
   # START PHP FILES
   
-  AN_ERROR_OCCURRED: "An error occurred"
+  AN_ERROR_OCCURRED: An error occurred
   BUTTON_ATTACH_TEXT: Downloading
   BUTTON_CANCEL_TEXT: Cancel
   BUTTON_EXPORT_TEXT: Create
-  BUTTON_INLINE_TEXT: Reading inline
   COLLECT_BRANCH: Include dependent branches
   COMPLETE_EXPORT: Complete Document Export 
   CREATION_FAILED: Creation failed
@@ -188,7 +186,6 @@ PLUGIN_SNAPPYGRAV:
   NOT_YET_MANAGED: not yet managed!
   SINGLE_OR_BRANCH_EXPORT: Single or Branch Export
   WAIT_FOR_FUTURE_UPDATES: Wait for future updates.
-  #YOUR_DOCUMENT_IS_READY_FOR: Your %1 is ready for...
   YOUR_DOCUMENT_IS_READY_FOR: Your document is ready for...
 
   # END PHP FILES
@@ -196,8 +193,12 @@ PLUGIN_SNAPPYGRAV:
  
   
   PREFACE_IMAGE: Image Status
-  PREFACE_IMAGE_HELP:  Displays the first image of the page. Useful if not included on the same page.
+  PREFACE_IMAGE_HELP: Displays the first image of the page. Useful if not included on the same page.
   CROPZOOM_WIDTH: Image Width
   CROPZOOM_WIDTH_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
   CROPZOOM_HEIGHT: Image Height
   CROPZOOM_HEIGHT_HELP: cropResize resizes an image to a smaller or larger size based on the width and the height.
+
+  EXPORT_BUTTON: Export
+  ENTIRE_SITE_EXPORT: Export Entire Site
+  THIS_PAGE_EXPORT: Export This Page 

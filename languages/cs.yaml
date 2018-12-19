@@ -35,3 +35,5 @@ PLUGIN_SNAPPYGRAV:
   DOCUMENT_TITLE_HELP: Vloží vlastnost Title do PDF dokumentu
   ZOOM_FACTOR: Míra přiblížení
   ZOOM_FACTOR_HELP: Použít tuto míru přiblížení (výchozí je 1)
+
+  EXPORT_BUTTON: Vývozní

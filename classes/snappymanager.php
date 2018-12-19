@@ -126,20 +126,7 @@ class SnappyManager
       $export_branch  = $uri->param('branch');
       $export_route   = $uri->param('route');
       $export_route   = str_replace('@','/',$export_route);
-/*
-      //For now only the pdf format is handled
-      $export_type    = $uri->param('type');
-      if( $export_type ){
-        if( $export_type != 'pdf' ){
-          $this->json_response = [
-            'status'    => 'error',
-            'title'     => $lang->translate('PLUGIN_SNAPPYGRAV.CREATION_FAILED'),
-            'message'   => strtoupper($export_type) .' '. $lang->translate('PLUGIN_SNAPPYGRAV.NOT_YET_MANAGED') . '<br/>' . $lang->translate('PLUGIN_SNAPPYGRAV.WAIT_FOR_FUTURE_UPDATES')
-          ];
-          return true;
-        }
-      }
-*/
+
       try {
         $return_value = $this->makeDocument($export_route, $export_branch);
         $encoded_pdf = $return_value['encoded_pdf'];
@@ -153,8 +140,6 @@ class SnappyManager
         return true;
       }
 
-      $button_text        = $lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_TEXT');
-      $inline_button      = $lang->translate('PLUGIN_SNAPPYGRAV.INLINE');
       $attachment_button  = $lang->translate('PLUGIN_SNAPPYGRAV.ATTACHMENT');
       $message            = $lang->translate('PLUGIN_SNAPPYGRAV.YOUR_DOCUMENT_IS_READY_FOR');
       //$message            = str_replace('%1', strtoupper($export_type), $message);
@@ -232,11 +217,6 @@ class SnappyManager
             }
             $page_children = $page->evaluate([$my_path => $where ]);
             $collection = $page_children;
-            /* evaluate
-              if( $current_theme != 'learn2' && $current_theme != 'learn3' ){
-                $collection = $page_children->order('date', 'desc');
-              }
-            */ 
 
             foreach ($collection as $page) {
                 $parameters['breadcrumbs']  = $this->getCrumbs( $page );

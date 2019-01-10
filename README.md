@@ -95,6 +95,8 @@ I've tried this string for:
 
 You can do this configuration in the plugin's configuration.  Simply copy the `user/plugins/snappygrav/snappygrav.yaml` into `user/config/plugins/snappygrav.yaml` and make your modifications.
 
+> I HAVE TO REMEMBER: TO UPDATE TO VERSION 1.9.0
+
 | Variable | Default | Options | Note |
 |----------|---------|-------------------------------------------------|--------------------------------------------------------------------------------------------|
 | enabled | true | `true` or `false` | Set to false to disable this plugin completely. |

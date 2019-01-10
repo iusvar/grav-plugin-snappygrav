@@ -20,11 +20,11 @@
 
 
 {% macro loop(p, depth, twig_vars, parameters) %}
-
+  {% set branch = parameters['branch'] %}
   {% set bread    = twig_vars['config'].plugins.snappygrav.breadcrumbs_enabled %}
-  {% set page_break  = twig_vars['config'].plugins.snappygrav.page_break %}
   {% set p_title  = twig_vars['config'].plugins.snappygrav.preface_title %}
   {% set p_author = twig_vars['config'].plugins.snappygrav.preface_author %}
+  
   {% set p_date   = twig_vars['config'].plugins.snappygrav.preface_date %}
   {% set date_format = twig_vars['config'].plugins.snappygrav.date_format %}
   {% set date_fmt = twig_vars['config'].system.pages.dateformat.short %}
@@ -36,26 +36,28 @@
   {% set cz_width  = twig_vars['config'].plugins.snappygrav.cropzoom_width %}
   {% set cz_height  = twig_vars['config'].plugins.snappygrav.cropzoom_height %}
 
-  {% if p.visible %}
+  {% if p.visible is empty or p.visible is defined and p.visible %}
 
-    {% if page_break %}
-      <div style="page-break-before:always">&nbsp;</div>
-    {% endif %}
-
+    {# BREAD #}
     {% if bread %}
       {% set array = [] %}
       <p>{{ _self.crumb(p, '', array, twig_vars) }} / <b><a name="{{ p.slug }}">{{ p.title }}</a></b> </p>
     {% endif %}
 
-{% if p_image %}
-  {% set image = p.media.images|first %}
-  {% if image %}
-    {{ image.cropZoom(cz_width,cz_height).html }}
-  {% endif %}
-{% endif %}
+    {# IMAGE #}
+    {% if p_image %}
+      {% set image = p.media.images|first %}
+      {% if image %}
+        {{ image.cropZoom(cz_width,cz_height).html }}
+      {% endif %}
+    {% endif %}
 
-    {% if p_title %}<h1 class="title"><center>{{ p.title|raw }}</center></h1>{% endif %}
+    {# TITLE #}
+    {% if p_title %}
+      <h1 class="title"><center>{{ p.title|raw }}</center></h1>
+    {% endif %}
 
+    {# AUTHOR/S #}
     {% if p_author %}
       {% set list_author = p.taxonomy.author %}
       {% if list_author is not empty %}
@@ -63,19 +65,26 @@
       {% endif %}
     {% endif %}
 
-    {% if p_date %}<center><b>{{ p.date|date(date_fmt)|raw }}</b></center>{% endif %}
+    {# DATE #}
+    {% if p_date %}
+      <p>{{ p.date|date(date_fmt)|raw }}</p>
+      {#<p>{{ 'GRAV.DAYS_OF_THE_WEEK'|ta(p.date|date('N') - 1) }}, {{ p.date|date("d") }} {{ 'GRAV.MONTHS_OF_THE_YEAR'|ta(p.date|date('n') - 1) }} {{ p.date|date('Y') }}</p>#}
+    {% endif %}
 
+    {# CONTENT #}
     {{ p.content|raw }}
 
-    {% set pcol = p.children() %}
-    {% for pages in pcol %}
-      {% if pages.children().count > 0 %}
-        {{ _self.loop(pages, depth + 1, twig_vars, parameters) }}
-      {% else %}
-        {{ _self.loop(pages, depth, twig_vars, parameters) }}
-      {% endif %}
-    {% endfor %}
-    
+    {% if branch %}
+      {% set pcol = p.children() %}
+      {% for pages in pcol %}
+        {% if pages.children().count > 0 %}
+          {{ _self.loop(pages, depth + 1, twig_vars, parameters) }}
+        {% else %}
+          {{ _self.loop(pages, depth, twig_vars, parameters) }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
   {% endif %}
 
 {% endmacro %}

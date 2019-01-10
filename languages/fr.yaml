@@ -23,9 +23,12 @@ PLUGIN_SNAPPYGRAV:
   EXPORT_BUTTON_ICON: Icône
   #EXPORT_BUTTON_ICON_PLACEHOLDER: eg. fa fa-download
 
-  SECTION_BLOG_FOLDER: Dossier de blog
-  BLOG_FOLDER: Slug
-  BLOG_FOLDER_HELP: Nom du dossier du blog sans barre oblique (avant ou après)
+  SECTION_COLLECTION: Dossier de blog
+  COLLECTION_OPTIONS: Options
+  PAGES_FOLDER: Slug
+  ORDER_BY: Trier par
+  ORDER_DIR: Dir pour
+  PAGES_FOLDER_HELP: Nom du dossier du blog sans barre oblique (avant ou après)
 
   SECTION_TIME: Temps d'exécution
   SET_TIME_LIMIT: Fixer une limite de temps
@@ -172,7 +175,7 @@ PLUGIN_SNAPPYGRAV:
 
   # COMMENCER FICHIERS PHP
   
-  AN_ERROR_OCCURRED: Une erreur est survenue
+  AN_ERROR_OCCURRED: Il y avait une erreur de ligne
   BUTTON_ATTACH_TEXT: Téléchargement
   BUTTON_CANCEL_TEXT: Annuler
   BUTTON_EXPORT_TEXT: Créer

@@ -1,37 +1,49 @@
 # Global plugin configurations.
 enabled: true                   # Set to false to disable this plugin completely.
-built_in_css: true              # Use built-in CSS of the plugin.
-css_textarea: ".title {color:blue;}" # Additional CSS
-wk_position: plugin             # The options are: data, plugin, os (default: plugin)
-wk_path: ''                     # Path of the wkhtmltopdf program
-default_type: pdf               # Preferred document format.
-blog_folder: blog               # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
-set_time_limit: 60              # Limits the maximum execution time
-preface_title: true             # When true prints title (default = false)
-preface_author: true            # When true prints author (default = false)
-preface_date: true              # When true prints date (default = false)
+
+branch_enabled: true            # When true print also prints the children of the current page (default = true)
 breadcrumbs_enabled: true       # When true prints breadcrumbs (default = true)
 breadcrumbs_link: true          # When true prints link to the online document (default = true)
-branch_enabled: true            # When true print also prints the children of the current page (default = true)
-page_break: true                # When true adds a page-break before a page
-date_format: short              # Gets the date format (short or long) from the configuration of the file system.yaml
-theme: light                    # jQuery Confirm v3: theme
-btn_export: Create              # Button text to confirm
 btn_cancel: Cancel              # Button text to cancel
-btn_export_color: green         # Background color of the button to confirm
 btn_cancel_color: gray          # Background color of the button to cancel
-export_button_icon: ''          # Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present.
-btn_plugin_color: '#ffffff'     # Color of the plugin button text
+btn_export_color: green         # Background color of the button to confirm
+btn_export: Create              # Button text to confirm
 btn_plugin_bg_color: '#63e010'  # Background color of the plugin button text
-btn_plugin_hover_color: '#ffffff' # Color of the plugin button text when mouse over
+btn_plugin_color: '#ffffff'     # Color of the plugin button text
 btn_plugin_hover_bg_color: '#eb0c0c' # Background color of the plugin button text when mouse over
+btn_plugin_hover_color: '#ffffff' # Color of the plugin button text when mouse over
+built_in_css: true              # Use built-in CSS of the plugin.
+collection_options: '@page.children'
+cropzoom_height: 400
+cropzoom_width: 600
+css_textarea: ""                # Additional CSS
+date_format: short              # Gets the date format (short or long) from the configuration of the file system.yaml
 encoding: 'utf-8'
-grayscale: false                 # PDF will be generated in grayscale if true (default = false)
+export_button_icon: ''          # Plugin button icon. Nothing is printed if empty field. Make sure the text or icon is present.
+grayscale: false                # PDF will be generated in grayscale if true (default = false)
+library: tcpdf
 margin_bottom: 10               # <unitreal> Set the page bottom margin (default 10mm)
 margin_left: 10                 # <unitreal> Set the page left margin (default 10mm)
 margin_right: 10                # <unitreal> Set the page right margin (default 10mm)
 margin_top: 10                  # <unitreal> Set the page top margin (default 10mm)
+order_by: date
+order_dir: desc
 orientation: portrait           # Set orientation to Landscape or Portrait
-title: true                     # I prefer True or False, getting title from site page
-zoom: 1                         # Use this zoom factor (default 1) <float>
+page_break: true                # When true adds a page-break before a page
+pages_folder: blog              # For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts (default = blog)
+page_size: A4
+preface_author: true            # When true prints author (default = false)
+preface_date: true              # When true prints date (default = false)
+preface_image: false
+preface_title: true             # When true prints title (default = false)
 print_media_type: true          # When true, it uses print-media-type option, otherwise it uses no-print-media-type option (default true)
+set_time_limit: 60              # Limits the maximum execution time
+showwatermarktext: false
+tcpdf_setprintfooter: false
+tcpdf_setprintheader: false
+theme: light                    # jQuery Confirm v3: theme
+title: true                     # I prefer True or False, getting title from site page
+toc: false
+wk_path: ''                     # Path of the wkhtmltopdf program
+wk_position: plugin             # The options are: data, plugin, os (default: plugin)
+zoom: 1                         # Use this zoom factor (default 1) <float>

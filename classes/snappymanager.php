@@ -120,7 +120,9 @@ class SnappyManager
     protected function taskSnappy()
     {
       $grav = Grav::instance();
+      $config = $grav['config'];
       $lang = $grav['language'];
+      $locator = $grav['locator'];
       $uri = $grav['uri'];
 
       $export_branch  = $uri->param('branch');
@@ -128,14 +130,60 @@ class SnappyManager
       $export_route   = str_replace('@','/',$export_route);
 
       try {
+        // selected library by the administrator
+        $library = $config->get('plugins.snappygrav.library');
+
+        // loading composer.json
+        $path = $locator->findResource('plugin://snappygrav/composer.json', true, true);
+        $string = file_get_contents($path);
+
+        $space = '&nbsp;&nbsp;&nbsp;';
+        $command[$library] = '';
+        $knp_snappy = true;
+        $command['knp-snappy'] = '';
+        $command['note'] = '';
+
+        // check if the library is present in the composer.json
+        $library_been_found = strpos($string, $library);
+        if ($library_been_found === false) {
+          $command['mpdf'] = $space.'composer require mpdf/mpdf';
+          $command['tcpdf'] = $space.'composer require tecnickcom/tcpdf';
+          $command['wkhtmltopdf'] = $space.'composer require h4cc/wkhtmltopdf-i386 (*)';
+        }
+
+        // check if the knplabs/knp-snappy library is present in the composer.json
+        if($library=='wkhtmltopdf'){
+          $knp_snappy = strpos($string, 'knp-snappy');
+          if ($knp_snappy===false){
+            $newline = '';
+            if( !empty($command['wkhtmltopdf']) ){
+              $newline = '<br/>';
+            }                
+            $command['knp-snappy'] = $newline.$space.'composer require knplabs/knp-snappy';
+          }
+          $command['note'] = '<br/>(*) o altra libreria idonea con il proprio server.';
+        }
+
+        // returns the message containing the library to be installed
+        if ($library_been_found === false || $knp_snappy === false) {
+          $this->json_response = [
+            'status'    => 'error',
+            'title'     => strtoupper($library).' non installata',
+            'message'   => 'Spostarsi in <b>user/plugins/snappygrav/</b> ed eseguire<br/><code>'.$command[$library].$command['knp-snappy'].'</code>'.$command['note']
+          ];
+          return true;
+        }
+
+        // collect page data to request production of the document
         $return_value = $this->makeDocument($export_route, $export_branch);
         $encoded_pdf = $return_value['encoded_pdf'];
         $filename = $return_value['filename'];
+        
       } catch (\Exception $e) {
         $this->json_response = [
           'status'    => 'error',
-          'title'     => 'Error 1',
-          'message'   => $lang->translate('PLUGIN_SNAPPYGRAV.AN_ERROR_OCCURRED') . '. ' . $e->getMessage()
+          'title'     => $lang->translate('PLUGIN_SNAPPYGRAV.AN_ERROR_OCCURRED').' '.$e->getLine(),
+          'message'   => $e->getMessage()
         ];
         return true;
       }
@@ -144,6 +192,7 @@ class SnappyManager
       $message            = $lang->translate('PLUGIN_SNAPPYGRAV.YOUR_DOCUMENT_IS_READY_FOR');
       //$message            = str_replace('%1', strtoupper($export_type), $message);
 
+      // returns the name and content of the created document
       $this->json_response = [
         'status'        => 'success',
         'message'       => $message,
@@ -165,75 +214,43 @@ class SnappyManager
 
       $parameters = [];
       $html = [];
-      $filename = 'completepdf';
       $temp_html = '';
-
+      $filename = 'completepdf';
+      
       $metadata['author']   = $config->get('site.author.name', $_SERVER['SERVER_NAME']);
       $metadata['title']    = 'Title';
       $metadata['subject']  = $config->get('site.metadata.description', $_SERVER['SERVER_NAME']);
       $metadata['keywords'] = 'Keywords';
       $metadata['creator']  = $config->get('site.title', $_SERVER['SERVER_NAME']);
-
-      if( !empty($route) ) { //single or branch
+      
+      // complete
+      if( empty($route) ) {
+        $temp_html = $twig->processTemplate('complete.html.twig', ['page' => $page]);
+        
+      // single or branch
+      } else {
         $found = $page->find( $route );
         $parameters['branch'] = ($branch == 'yes' ? true: false);
         $parameters['breadcrumbs']  = $this->getCrumbs( $found );
         $filename = $found->title();
-        $temp_html = $twig->processTemplate('snappygrav.html.twig', ['page' => $found, 'parameters' => $parameters]);
-        $html[] = preg_replace('/<iframe>.*<\/iframe>/is', '', $temp_html);
+        $temp_html = $twig->processTemplate('single.html.twig', ['page' => $found, 'parameters' => $parameters]);
 
         $metadata['author'] = ( isset($found->taxonomy()['author']) ? implode(',', $found->taxonomy()['author']) : $metadata['author'] );
         $metadata['title'] = $found->title();
-        //$metadata['subject'] = 'Subject';
         $keywords = ( isset($found->taxonomy()['tag']) ? implode(',', $found->taxonomy()['tag']) : 'Please, set taxonomy' );
         $metadata['keywords'] = $keywords;
       }
+      $html[] = preg_replace('/<iframe>.*<\/iframe>/is', '', $temp_html);
 
-        if( empty($route) ) { //completepdf
+      // create the document with the selected library
+      $pdf = $this->servePDF( $html, $metadata );
+      $encoded_pdf = base64_encode( $pdf );
 
-            $current_theme = $themes->current();
-            switch ($current_theme) {
-                case 'antimatter':
-                    $where = DS . $config->get('plugins.snappygrav.slug_blog');
-                    if(empty($where)) $where = DS . 'blog';
-                    $my_path='@page.children';
-                    break;
-                case 'knowledge-base':
-                    $where = $config->get('themes.knowledge-base')['params']['articles']['root'];
-                    if( empty($where) ) $where = DS . 'home';
-                    $my_path='@page.children';
-                    break;
-                case 'learn2':
-                    $where = DS;
-                    $my_path='@root.descendants'; //see https://learn.getgrav.org/content/collections
-                    break;
-                case 'learn2-git-sync':
-                    $where = DS;
-                    $my_path='@root.descendants';
-                default:
-                    $where = DS;
-                    $my_path='@root.descendants';
-                    break;
-            }
-            $page_children = $page->evaluate([$my_path => $where ]);
-            $collection = $page_children;
+      $return_value = array();
+      $return_value['encoded_pdf'] = $encoded_pdf;
+      $return_value['filename'] = $filename;
 
-            foreach ($collection as $page) {
-                $parameters['breadcrumbs']  = $this->getCrumbs( $page );
-                $parameters['branch']       = ($branch == 'yes' ? true : false );
-                $temp_html = $twig->processTemplate('snappygrav.html.twig', ['page' => $page, 'parameters' => $parameters]);
-                $html[] = preg_replace('/<iframe>.*<\/iframe>/is', '', $temp_html);
-            }
-        }
-        
-        $pdf = $this->servePDF( $html, $metadata );
-        $encoded_pdf = base64_encode( $pdf );
-
-        $return_value = array();
-        $return_value['encoded_pdf'] = $encoded_pdf;
-        $return_value['filename'] = $filename;
-
-        return $return_value;
+      return $return_value;
     }
 
 
@@ -302,7 +319,6 @@ class SnappyManager
           $pdf = static::engineWKHTMLTOPDF( $html, $metadata );
           break;
       }
-
       return $pdf;
     }
     

@@ -102,7 +102,6 @@ You can do this configuration in the plugin's configuration.  Simply copy the `u
 | css_textarea | ".title {color:blue;}" | string | Additional CSS |
 | wk_position | plugin | `data` or `plugin` or `os` | Position of the wkhtmltopdf program |
 | wk_path |  | string | Path of the wkhtmltopdf program |
-| default_type | pdf | `pdf` or `epub` or `azw3` | Preferred document format. |
 | slug_blog | blog | string | For `Blog Site` skeleton with `Antimatter` theme. It is the folder which contains the posts |
 | set_time_limit | 60 | number | Limits the maximum execution time |
 | preface_title | true | `true` or `false` | When true prints title |

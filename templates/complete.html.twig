@@ -1,0 +1,143 @@
+{% extends 'partials/snappy-base.html.twig' %}
+
+{% macro crumb(p, address, array, twig_vars) %}
+  {% set link = twig_vars['config'].plugins.snappygrav.breadcrumbs_link %}
+  {% if p.parent.slug == 'pages' %}
+    {% for key, value in array|reverse %}
+        {% if link %}
+          {% set internal_link = '<a href="#' ~ value.slug ~ '">' ~ value.title ~ '</a>' %}
+        {% else %}
+          {% set internal_link = value.title %}
+        {% endif %}
+        {% set address = address ~ ' / ' ~ internal_link %}
+    {% endfor %}
+  {% else %}
+    {% set array = array|merge([ { 'slug': p.parent.slug, 'title': p.parent.title, 'route': p.parent.route } ]) %}
+    {{ _self.crumb(p.parent, address, array, twig_vars) }}
+  {% endif %}
+  {{ address|raw }}
+{% endmacro %}
+
+{% set bread = _context['config'].plugins.snappygrav.breadcrumbs_enabled %}
+{% set page_break = _context['config'].plugins.snappygrav.page_break %}
+{% set p_title = _context['config'].plugins.snappygrav.preface_title %}
+{% set p_author = _context['config'].plugins.snappygrav.preface_author %}
+
+{% set p_date   = _context['config'].plugins.snappygrav.preface_date %}
+{% set date_format = _context['config'].plugins.snappygrav.date_format %}
+{% set date_fmt = _context['config'].system.pages.dateformat.short %}
+{% if date_format == "long" %}
+  {% set date_fmt = _context['config'].system.pages.dateformat.long %}
+{% endif %}
+  
+{% set p_image = _context['config'].plugins.snappygrav.preface_image %}
+{% set cz_width = _context['config'].plugins.snappygrav.cropzoom_width %}
+{% set cz_height = _context['config'].plugins.snappygrav.cropzoom_height %}
+
+{% set collection_options = _context['config'].plugins.snappygrav.collection_options %}
+{% set where = '/' ~ _context['config'].plugins.snappygrav.pages_folder %}
+{% set order_by = _context['config'].plugins.snappygrav.order_by %}
+{% set order_dir = _context['config'].plugins.snappygrav.order_dir %}
+
+{% block content %}
+
+  {% set collection = page.evaluate([{ (collection_options) : where }]) %}
+  {% set ordered_collection = collection.order(order_by, order_dir) %}
+  
+  {% for p in collection %}
+
+    {% if p.visible is empty or p.visible is defined and p.visible %}
+
+      {# PAGE BREAK #}
+      {% if page_break %}
+        {% if not loop.first %}
+          <div style="page-break-before:always">&nbsp;</div>
+        {% endif %}
+      {% endif %}
+
+      {# BREAD #}
+      {% if bread %}
+        {% set array = [] %}
+        <p>{{ _self.crumb(p, '', array, twig_vars) }} / <b><a name="{{ p.slug }}">{{ p.title }}</a></b> </p>
+      {% endif %}
+
+      {# IMAGE #}
+      {% if p_image %}
+        {% set image = p.media.images|first %}
+        {% if image %}
+          <span class="imgframe">{{ image.cropZoom(cz_width,cz_height).html|raw }}</span>
+        {% endif %}
+      {% endif %}
+
+      {# TITLE #}
+      {% if p_title %}
+        <h1 class="title">{{ p.title }}</h1>
+      {% endif %}
+
+      {# AUTHOR/S #}
+      {% if p_author %}
+        {% set list_author = p.taxonomy.author %}
+        {% if list_author is not empty %}
+          <center><b>{{ list_author|snappy_implode(", ")|raw }}</b></center>
+        {% endif %}
+      {% endif %}
+
+      {# DATE #}
+      {% if p_date %}
+        <p>{{ p.date|date(date_fmt)|raw }}</p>
+        {#<p>{{ 'GRAV.DAYS_OF_THE_WEEK'|ta(p.date|date('N') - 1) }}, {{ p.date|date("d") }} {{ 'GRAV.MONTHS_OF_THE_YEAR'|ta(p.date|date('n') - 1) }} {{ p.date|date('Y') }}</p>#}
+      {% endif %}
+
+      
+
+      {# CONTENT #}
+      <p>{{ p.content }}</p>
+      
+    {% endif %}
+    
+  {% endfor %}
+  
+{% endblock %}
+
+
+{###################################################################################
+{% macro loop(p, depth, twig_vars, parameters) %}
+  {% set bread    = twig_vars['config'].plugins.snappygrav.breadcrumbs_enabled %}
+  {% set page_break  = twig_vars['config'].plugins.snappygrav.page_break %}
+  {% set p_title  = twig_vars['config'].plugins.snappygrav.preface_title %}
+  {% set p_author = twig_vars['config'].plugins.snappygrav.preface_author %}
+  {% set p_date   = twig_vars['config'].plugins.snappygrav.preface_date %}
+  {% set date_format = twig_vars['config'].plugins.snappygrav.date_format %}
+  {% set date_fmt = twig_vars['config'].system.pages.dateformat.short %}
+  {% if date_format == "long" %}
+      {% set date_fmt = twig_vars['config'].system.pages.dateformat.long %}
+  {% endif %}
+  {% set p_image  = twig_vars['config'].plugins.snappygrav.preface_image %}
+  {% set cz_width  = twig_vars['config'].plugins.snappygrav.cropzoom_width %}
+  {% set cz_height  = twig_vars['config'].plugins.snappygrav.cropzoom_height %}
+  {% if p.visible %}
+    {% if page_break %}
+      <div style="page-break-before:always">&nbsp;</div>
+    {% endif %}
+    {% if p_image %}
+      {% set image = p.media.images|first %}
+      {% if image %}
+        {{ image.cropZoom(cz_width,cz_height).html }}
+      {% endif %}
+    {% endif %}
+    {% if p_title %}<h1 class="title"><center>{{ p.title|raw }}</center></h1>{% endif %}
+    {% set pcol = p.children() %}
+    {% for pages in pcol %}
+      {% if pages.children().count > 0 %}
+        {{ _self.loop(pages, depth + 1, twig_vars, parameters) }}
+      {% else %}
+        {{ _self.loop(pages, depth, twig_vars, parameters) }}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endmacro %}
+
+{% block content %}
+  {{ _self.loop(page, 0, _context, parameters) }}
+{% endblock %}
+####################################################################################}

@@ -1,5 +1,5 @@
 name: SnappyGrav
-version: 1.9.0-beta.2
+version: 1.9.0
 description: Save a page, branch or all website in PDF format
 icon: file-pdf-o
 author:
@@ -89,18 +89,67 @@ form:
               size: large
               #placeholder: PLUGIN_SNAPPYGRAV.EXPORT_BUTTON_ICON_PLACEHOLDER
 
-            section_blog_folder:
+            section_collection:
               type: section
-              title: PLUGIN_SNAPPYGRAV.SECTION_BLOG_FOLDER
+              title: PLUGIN_SNAPPYGRAV.SECTION_COLLECTION
               underline: false
-              
-            blog_folder:
+
+            collection_options:
               type: text
               size: large
-              label: PLUGIN_SNAPPYGRAV.BLOG_FOLDER
-              help: PLUGIN_SNAPPYGRAV.BLOG_FOLDER_HELP
+              label: PLUGIN_SNAPPYGRAV.COLLECTION_OPTIONS
+              help: PLUGIN_SNAPPYGRAV.COLLECTION_OPTIONS_HELP
               validate:
                 type: string
+              placeholder: 'eg. @page.children or @root.descendants'
+
+            pages_folder:
+              type: text
+              size: large
+              label: PLUGIN_SNAPPYGRAV.PAGES_FOLDER
+              help: PLUGIN_SNAPPYGRAV.PAGES_FOLDER_HELP
+              validate:
+                type: string
+              placeholder: 'eg. blog'
+
+            order_by:
+              type: select
+              label: PLUGIN_SNAPPYGRAV.ORDER_BY
+              help: PLUGIN_SNAPPYGRAV.ORDER_BY_HELP
+              size: small
+              default: date
+              options:
+                default: Default
+                title: Title
+                date: Date
+                folder: Folder
+
+            order_dir:
+              type: select
+              label: PLUGIN_SNAPPYGRAV.ORDER_DIR
+              help: PLUGIN_SNAPPYGRAV.ORDER_DIR_HELP
+              size: small
+              default: desc
+              options:
+                default: Default
+                asc: Ascending
+                desc: Descending
+
+            #order_by:
+            #  type: text
+            #  size: small
+            #  label: PLUGIN_SNAPPYGRAV.ORDER_BY
+            #  help: PLUGIN_SNAPPYGRAV.ORDER_BY_HELP
+            #  validate:
+            #    type: string
+
+            #order_dir:
+            #  type: text
+            #  size: small
+            #  label: PLUGIN_SNAPPYGRAV.ORDER_DIR
+            #  help: PLUGIN_SNAPPYGRAV.ORDER_DIR_HELP
+            #  validate:
+            #    type: string
 
             section_time:
               type: section
@@ -425,16 +474,48 @@ form:
                 type: bool
 
         # METADATA
-        tab_metadata:
-          type: tab
-          title: PLUGIN_SNAPPYGRAV.TAB_METADATA
-          fields:
+        #tab_metadata:
+        #  type: tab
+        #  title: PLUGIN_SNAPPYGRAV.TAB_METADATA
+        #  fields:
           
             preface:
               type: section
               title: PLUGIN_SNAPPYGRAV.PREFACE
               underline: false
 
+            preface_image:
+              type: toggle
+              label: PLUGIN_SNAPPYGRAV.PREFACE_IMAGE
+              help: PLUGIN_SNAPPYGRAV.PREFACE_IMAGE_HELP
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+              validate:
+                type: bool
+
+            cropzoom_width:
+              type: text
+              size: x-small
+              label: PLUGIN_SNAPPYGRAV.CROPZOOM_WIDTH
+              help: PLUGIN_SNAPPYGRAV.CROPZOOM_WIDTH_HELP
+              append: px
+              default: 600
+              validate:
+                type: number
+
+            cropzoom_height:
+              type: text
+              size: x-small
+              label: PLUGIN_SNAPPYGRAV.CROPZOOM_HEIGHT
+              help: PLUGIN_SNAPPYGRAV.CROPZOOM_HEIGHT_HELP
+              append: px
+              default: 400
+              validate:
+                type: number
+            
             preface_title:
               type: toggle
               label: PLUGIN_SNAPPYGRAV.PREFACE_TITLE
@@ -539,10 +620,10 @@ form:
                 type: bool
 
         # JQUERY
-        tab_jquery:
-          type: tab
-          title: PLUGIN_SNAPPYGRAV.TAB_JQUERY
-          fields:
+        #tab_jquery:
+        #  type: tab
+        #  title: PLUGIN_SNAPPYGRAV.TAB_JQUERY
+        #  fields:
           
             jquery_confirm:
               type: section

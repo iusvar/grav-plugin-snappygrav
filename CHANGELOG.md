@@ -1,13 +1,17 @@
-# v1.9.0-beta.2
-## 12/19/2018
+# v1.9.0
+## 01/10/2019
 
 1. [](#new)
     * local language for the export button. Thanks @algofribaz [#41](https://github.com/iusvar/grav-plugin-snappygrav/issues/41)
     * Different title for single page or entire site. Credit as above
     * Added French language
+    * Inform if the preferred library is missing (presence in composer.json is checked)
+    * Inform the line of a possible error
+    * Added fields on the collection of pages in administrator (no matter the theme adopted)
 1. [](#bugfix)
     * Added a minimum autoload.php to avoid error. Thanks @dwitzig [#40](https://github.com/iusvar/grav-plugin-snappygrav/issues/40)
     * File fr.yaml in the right folder
+    * Fixed error on the icon of the export button that turns into spinner
 
 
 # v1.9.0-beta.1

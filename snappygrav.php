@@ -135,14 +135,14 @@ class SnappyGravPlugin extends Plugin
 
     public function generateLink($route = null, $options = [])
     {
-        $snappy_bur     = $this->grav['base_url_relative'] . DS;
+        $snappy_bur = $this->grav['base_url_relative'] . DS;
         $snappy_manager = $this->route.'.json' . DS;
-        $snappy_task    = 'snappytask:snappy' . DS;
+        $snappy_task = 'snappytask:snappy' . DS;
 
         //complete
-        $esc_route  = "";
-        $cid        = "";
-        $button_id  = "complete";
+        $esc_route = "";
+        $cid = "";
+        $button_id = "complete";
 
         $btn_title = $this->lang->translate('PLUGIN_SNAPPYGRAV.ENTIRE_SITE_EXPORT');
         //single or branch
@@ -154,20 +154,20 @@ class SnappyGravPlugin extends Plugin
             $btn_title = $this->lang->translate('PLUGIN_SNAPPYGRAV.THIS_PAGE_EXPORT');
         }
 
-        $nonce          = Utils::getNonce('snappy-form');
-        $snappy_nonce   = 'snappy-nonce:'.$nonce;
+        $nonce = Utils::getNonce('snappy-form');
+        $snappy_nonce = 'snappy-nonce:'.$nonce;
         
-        $branch         = $this->config->get('plugins.snappygrav.branch_enabled');
-        $theme          = $this->config->get('plugins.snappygrav.theme');
+        $branch = $this->config->get('plugins.snappygrav.branch_enabled');
+        $theme = $this->config->get('plugins.snappygrav.theme');
 
         $branch_value = 'branch:'.($branch ? 'yes' : 'no') . DS;
         $branch_btn_text = $this->lang->translate('PLUGIN_SNAPPYGRAV.COLLECT_BRANCH');
 
         $checked = ($branch ? 'checked' : '');
 
-        $btn_data       = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $snappy_nonce;
+        $btn_data = $snappy_bur . $snappy_manager . $snappy_task . $branch_value . $esc_route . $snappy_nonce;
 
-        $option_label   = $this->lang->translate('PLUGIN_SNAPPYGRAV.OPTIONS');
+        $option_label = $this->lang->translate('PLUGIN_SNAPPYGRAV.OPTIONS');
 
         $btn_content = '';
         $current_theme = $this->grav['themes']->current();
@@ -186,11 +186,11 @@ class SnappyGravPlugin extends Plugin
         $btn_title .= '<input id=\"export-pdf\" type=\"hidden\">';
         $btn_title .= '<input id=\"export-filename\" type=\"hidden\">';
 
-        $export_button_icon     = $this->config->get('plugins.snappygrav.export_button_icon');
-        $export_button_icon    = ( empty($export_button_icon) ? '' : '<i class="'.$export_button_icon.'" aria-hidden="true"></i>' );
+        $awesome_icon = $this->config->get('plugins.snappygrav.export_button_icon');
+        $export_button_icon = ( empty($awesome_icon) ? "" : "<i class=\"".$awesome_icon."\" aria-hidden=true></i>" );
 
         $export_button_text = $this->lang->translate('PLUGIN_SNAPPYGRAV.EXPORT_BUTTON');
-        $space          = ( !empty($export_button_icon) && !empty($export_button_text) ? '&nbsp;' : '' );
+        $space = ( !empty($export_button_icon) && !empty($export_button_text) ? '&nbsp;' : '' );
         
         $btn_export_text    = $this->lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_EXPORT_TEXT');
         $btn_export_color   = $this->config->get('plugins.snappygrav.btn_export_color');
@@ -210,7 +210,7 @@ class SnappyGravPlugin extends Plugin
                             theme: "'.$theme.'",
                             closeIcon: true,
                             closeIconClass: "fa fa-close",
-                            icon: "'.$export_button_icon.'",
+                            icon: \''.$awesome_icon.'\',
                             useBootstrap: false,
                             title: "'.$btn_title.'",
                             content: "'.$btn_content.'",
@@ -235,7 +235,9 @@ class SnappyGravPlugin extends Plugin
                                     action: function () {
 
                                         // DISABLE BUTTON, CHANGE AWESOME ICON
-                                        $(".jconfirm-title-c .fa-download").removeClass(\'fa-download\').addClass(\'fa-spin fa-spinner\');
+                                        var awesome_element = $(".jconfirm-title-c").find(":first-child")[1];
+                                        var awesome_element_class = awesome_element.className;
+                                        $( awesome_element ).addClass(\'fa-spin fa-spinner\');
                                         this.buttons.export.disable();
 
                                         // GET BUTTON URL
@@ -248,22 +250,6 @@ class SnappyGravPlugin extends Plugin
                                             url = url.replace("branch:no","branch:yes");
                                         } else {
                                             url = url.replace("branch:yes","branch:no");
-                                        }
-                                        element.attr("data-snappy", url);
-
-                                        // EVALUATES EXPORT TYPE
-                                        var checkedType = "type:"+this.$content.find("input[name=\'radio-input\']:checked").val();
-                                        if (~url.indexOf(checkedType)){
-                                            // FOUND IT, ALREADY CORRESPONDING VALUE
-                                        } else {
-                                            // NOT FOUND, REPLACE NEW CHOICE
-                                            if (~url.indexOf("type:azw3")){
-                                                url = url.replace("type:azw3",checkedType);
-                                            } else if (~url.indexOf("type:epub")) {
-                                                url = url.replace("type:epub",checkedType);
-                                            } else if (~url.indexOf("type:pdf")) {
-                                                url = url.replace("type:pdf",checkedType);
-                                            }
                                         }
                                         element.attr("data-snappy", url);
 
@@ -299,7 +285,7 @@ class SnappyGravPlugin extends Plugin
                                                 content: errorMsg,
                                             });
                                         }).always(function(){
-                                            $(".jconfirm-title-c .fa-spin").removeClass(\'fa-spin fa-spinner\').addClass(\'fa-download\');
+                                            $(".jconfirm-title-c .fa-spin").removeClass(\'fa-spin fa-spinner\').addClass(awesome_element_class);
                                             element.prop( "disabled", false );
                                         });
 

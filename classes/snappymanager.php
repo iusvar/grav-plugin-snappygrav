@@ -153,23 +153,34 @@ class SnappyManager
 
         // check if the knplabs/knp-snappy library is present in the composer.json
         if($library=='wkhtmltopdf'){
+          $knp_snappy=false;
+          $library_been_found = false;
+          $command['wkhtmltopdf'] = $space.'composer require h4cc/wkhtmltopdf-i386 (*)';
+          $command['note'] = '<br/>(*) '.$lang->translate('PLUGIN_SNAPPYGRAV.APPROPRIATE_LIBRARY');
+          $newline = '<br/>';
+          $wk_position = $config->get('plugins.snappygrav.wk_position');
+          $wk_path = $config->get('plugins.snappygrav.wk_path');
+          if($wk_position=='os'){
+            if(file_exists($wk_path)){
+              $library_been_found = true;
+              $command['wkhtmltopdf'] = '';
+              $command['note'] = '';
+              $newline = '';
+            }
+          }
           $knp_snappy = strpos($string, 'knp-snappy');
           if ($knp_snappy===false){
-            $newline = '';
-            if( !empty($command['wkhtmltopdf']) ){
-              $newline = '<br/>';
-            }                
             $command['knp-snappy'] = $newline.$space.'composer require knplabs/knp-snappy';
           }
-          $command['note'] = '<br/>(*) o altra libreria idonea con il proprio server.';
         }
 
         // returns the message containing the library to be installed
         if ($library_been_found === false || $knp_snappy === false) {
+          $message = $lang->translate('PLUGIN_SNAPPYGRAV.MOVE_AND_RUN');
           $this->json_response = [
             'status'    => 'error',
-            'title'     => strtoupper($library).' non installata',
-            'message'   => 'Spostarsi in <b>user/plugins/snappygrav/</b> ed eseguire<br/><code>'.$command[$library].$command['knp-snappy'].'</code>'.$command['note']
+            'title'     => strtoupper($library).' '.$lang->translate('PLUGIN_SNAPPYGRAV.NOT_INSTALLED'),
+            'message' => str_replace('%1', '<b>user/plugins/snappygrav/</b>', $message) . '<br/><code>'.$command[$library].$command['knp-snappy'].'</code>'.$command['note']
           ];
           return true;
         }

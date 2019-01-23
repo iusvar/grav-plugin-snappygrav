@@ -191,6 +191,10 @@ PLUGIN_SNAPPYGRAV:
   WAIT_FOR_FUTURE_UPDATES: Attendere i futuri aggiornamenti.
   YOUR_DOCUMENT_IS_READY_FOR: Il documento è pronto per essere...
 
+  APPROPRIATE_LIBRARY: o altra libreria idonea con il proprio server.
+  NOT_INSTALLED: non installata
+  MOVE_AND_RUN: 'Spostarsi in %1 ed eseguire'
+
   # FINE FILE PHP
 
 

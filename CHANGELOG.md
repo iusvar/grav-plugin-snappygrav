@@ -1,3 +1,10 @@
+# v1.9.1
+## 01/23/2019
+
+1. [](#bugfix)
+    * Translated hardcoded strings. Thanks @hughbris [#43](https://github.com/iusvar/grav-plugin-snappygrav/issues/43)
+    * Added control over the existence of wkhtmltopdf in the O.S. Thanks @hughbris [#44](https://github.com/iusvar/grav-plugin-snappygrav/issues/44)
+
 # v1.9.0
 ## 01/10/2019
 

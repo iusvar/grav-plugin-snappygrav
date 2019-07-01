@@ -1,0 +1,211 @@
+# Russian
+PLUGIN_SNAPPYGRAV:
+
+  # START BLUEPRINTS.YAML
+
+  # BASIS
+  TAB_BASIS: Основные
+
+  PDF_ENGINE_SECTION: Движок PDF
+  LIBRARY: 'Библиотеки <span style="color:red;">до установки перед использованием плагина.</span><br/>Инструкции находятся в соответствующих вкладках.'
+  MPDF: mPDF
+  TCPDF: TCPDF
+  WKHTMLTOPDF: WKhtmlTOpdf
+
+  CSS_SECTION: Каскадные таблицы стилей
+  USE_BUILT_IN_CSS: Использовать встроенный CSS
+  USE_BUILT_IN_CSS_HELP: Если включено, опция "Абсолютный путь" в system.yaml должна быть установлена в "Да"
+  CSS_TEXTAREA: Дополнительный CSS
+  CSS_TEXTAREA_PLACEHOLDER: Добавление CSS
+  CSS_TEXTAREA_HELP: Дополнительный CSS помещен после возможного paper.css
+
+  PLUGIN_BUTTON: Кнопка плагина
+  EXPORT_BUTTON_ICON: Иконка
+  #EXPORT_BUTTON_ICON_PLACEHOLDER: eg. fa fa-download
+
+  SECTION_COLLECTION: Коллекция
+  COLLECTION_OPTIONS: Опции
+  PAGES_FOLDER: Папка pages
+  ORDER_BY: Сортировка по
+  ORDER_DIR: Направление сортировки
+  PAGES_FOLDER_HELP: Имя папки блога без косой черты (до или после)
+
+  SECTION_TIME: Время исполнения
+  SET_TIME_LIMIT: Установить ограничение по времени
+  SET_TIME_LIMIT_HELP: Ограничивает максимальное время выполнения
+
+
+  # MPDF
+  INSTALLATION: Установка
+
+  MPDF_SPACER: 'Перед началом, перейдите в папку <em>user/plugins/snappygrav/</em> и запустите <code>composer require mpdf/mpdf</code>'
+
+  SHOWWATERMARKTEXT: Показывать водяной знак в виде текста
+  SHOWWATERMARKTEXT_HELP: Определяет, стоит ли показывать/печатать водяной знак в виде текста на каждой странице.
+  SETWATERMARKTEXT: Текст водяного знака
+  SETWATERMARKTEXT_HELP: Установите текст водяного знака, который вы хотите показать/распечатать. Если значение пустое, по умолчанию будет ЧЕРНОВИК.
+  SETWATERMARKTEXT_PLACEHOLDER: "напр. ЧЕРНОВИК"
+  WATERMARKTEXTALPHA: Прозрачность текста водяного знака
+  WATERMARKTEXTALPHA_HELP: Задает прозрачность (альфа-значение), используемую для текста водяного знака на каждой странице. Если пусто, значение по умолчанию будет 0.2
+
+  # TCPDF
+  TCPDF_SPACER: 'Перед началом, перейдите в папку <em>user/plugins/snappygrav/</em> и запустите <code>composer require tecnickcom/tcpdf</code>'
+  OPTIONS: Опции
+
+  SET_PRINT_HEADER: Установить заголовок печати
+  SET_PRINT_HEADER_HELP: Установите флажок для печати заголовка страницы.
+
+  SET_PRINT_FOOTER: Установить нижний колонтитул печати
+  SET_PRINT_FOOTER_HELP: Установите флажок для печати нижнего колонтитула.
+
+  # WKHTMLTOPDF
+  WKHTMLTOPDF_SPACER: 'Перед началом, перейдите в папку <b>user/plugins/snappygrav/</b> и запустите:<br/><code>composer require knplabs/knp-snappy</code><br/><code>composer require h4cc/wkhtmltopdf-i386</code> или <code>wkhtmltopdf-amd64</code> или другое.'
+
+  WK_BINARY_FILE_POSITION: Местоположение двоичного файла
+  WK_POSITION: Положение
+  WK_DATA: Данные
+  WK_PLUGIN: SnappyGrav
+  WK_OS: ОС
+  WK_PATH_RULES: 'Начальные значения берутся из <b>Положения</b>:<br/>- <b>Данные</b>: <i>user/data/snappygrav/wkhtmltopdf-i386</i>).<br/>- <b>SnappyGrav</b>: <i>vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386</i>)<br/>- <b>Операционная система</b>: <i>/usr/local/bin/wkhtmltopdf</i>)<br/>Если <b>Путь</b> оставлен пустым, используются соответствующие значения по умолчанию.'
+
+  WK_PATH: Путь
+  WK_PATH_HELP: Путь двоичного файла Wkhtmltopdf. Вы можете оставить это поле пустым, когда ваша папка соответствует примерам в Правилах пути.
+  WK_PATH_PLACEHOLDER: "напр. vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386"
+
+  MONOCHROME_PRINTOUT: Монохромная распечатка
+  MONOCHROME_PRINTOUT_HELP: PDF будет создан в оттенках серого, если "Да"
+
+  PRINT_MEDIA_TYPE: Media Type для печати
+  PRINT_MEDIA_TYPE_HELP: Используйте тип media-type для печати вместо screen (по умолчанию). Каталог snappygrav / assets / css / содержит файл paper.css, в котором вы можете ввести свойства элементов на основе требуемого правила @media.
+
+  TOC: Оглавление
+  TOC_HELP: Добавление страницы в заголовке, которая содержить оглавление (по умолчанию отключено)
+
+  ZOOM_FACTOR: Коэффициент увеличения
+  ZOOM_FACTOR_HELP: Использование коэффициента увеличения (по умолчанию 1)
+
+  # COMMON
+  TAB_COMMON: Общие
+
+  BOTTOM_MARGIN: Отступ снизу
+  BOTTOM_MARGIN_HELP: Установить отступ страницы снизу (по умолчанию 10 мм)
+  LEFT_MARGIN: Отступ слева
+  LEFT_MARGIN_HELP: Установить отступ страницы слева (по умолчанию 10 мм)
+  RIGHT_MARGIN: Отступ справа
+  RIGHT_MARGIN_HELP: Установить отступ страницы справа (по умолчанию 10 мм)
+  TOP_MARGIN: Отступ сверху
+  TOP_MARGIN_HELP: Установить отступ страницы сверху (по умолчанию 10 мм)
+
+  PAGE_ORIENTATION: Ориентация страницы
+  PAGE_ORIENTATION_HELP: Установите ориентацию на Альбомную или Книжную
+  LANDSCAPE: Альбомная
+  PORTRAIT: Книжная
+
+  ENCODING: Кодировка
+  ENCODING_PLACEHOLDER: "напр. utf-8"
+
+  PAGE_SIZE: Размер страницы
+  PAGE_SIZE_HELP: Установите размер бумаги: A4, Letter и т.д.
+  EXECUTIVE: Executive
+  FOLIO: Folio
+  LEDGER: Ledger
+  LEGAL: Legal
+  LETTER: Letter
+  TABLOID: Tabloid
+
+  DOCUMENT_TITLE: Заголовок документа
+  DOCUMENT_TITLE_HELP: Помещает свойство Заголовок в pdf-документ
+
+  # METADATA
+  TAB_METADATA: Метаданные
+
+  PREFACE: Предисловие
+  PREFACE_TITLE: Статус заголовка
+  PREFACE_TITLE_HELP: Отображать заголовок страницы. Полезно, если не включено на той же странице.
+  PREFACE_AUTHOR: Статус автора
+  PREFACE_AUTHOR_HELP: Показывать автора страницы. Полезно, если не включено на той же странице.
+  PREFACE_DATE: Статус даты
+  PREFACE_DATE_HELP: Отображать дату страницы. Полезно, если не включено на той же странице.
+  DATE_FORMAT: Формат даты
+  DATE_FORMAT_SHORT: Короткий
+  DATE_FORMAT_LONG: Длинный
+
+  BREADCRUMBS: Хлебные крошки
+  BREADCRUMBS_ENABLED: Статус
+  BREADCRUMBS_ENABLED_HELP: Включает отображение хлебных крошек.
+  BREADCRUMBS_LINK: Ссылка
+  BREADCRUMBS_LINK_HELP: Каждая крошка ссылается на оригинальную онлайн-страницу.
+
+  BRANCH: Ветка
+  BRANCH_ENABLED: Статус сверху-вниз
+  BRANCH_ENABLED_HELP: Добавляет все нисходящие страницы с текущей страницы. Работает только сверху вниз.
+
+  PAGE_BREAK: Разрыв страницы
+  PAGE_BREAK_HELP: Добавление разрыва страницы перед страницей
+
+  # JQUERY
+  TAB_JQUERY: jQuery
+  JQUERY_CONFIRM: jQuery Confirm v3
+  THEME: Тема
+  LIGHT: Светлая
+  DARK: Темная
+  MODERN: Современная
+  SUPERVAN: Supervan
+  MATERIAL: Material
+  BOOTSTRAP: Bootstrap
+
+  BTN_EXPORT: Текст кнопки Экспорт
+  BTN_EXPORT_PLACEHOLDER: "напр. Создать"
+  BTN_CANCEL: Текст кнопки Отмена
+  BTN_CANCEL_PLACEHOLDER: "напр. Отмена"
+  BTN_EXPORT_COLOR: Цвет кнопки Экспорт
+  DEFAULT: По умолчанию
+  BLUE: Голубой
+  GREEN: Зеленый
+  RED: Красный
+  ORANGE: Оранжевый
+  PURPLE: Пурпурный
+  DARK: Темный
+  GRAY: Серый
+  BTN_CANCEL_COLOR: Цвет кнопки Отмена
+
+  # END BLUEPRINTS.YAML
+
+
+
+  # START PHP FILES
+
+  AN_ERROR_OCCURRED: Произошла ошибка в строке
+  BUTTON_ATTACH_TEXT: Загрузка
+  BUTTON_CANCEL_TEXT: Отмена
+  BUTTON_EXPORT_TEXT: Создать
+  COLLECT_BRANCH: Включить зависимые ветки
+  COMPLETE_EXPORT: Экспорт документа завершен
+  CREATION_FAILED: Создание прервано
+  DOCUMENT_TYPE: Тип документа
+  DRAFT: ЧЕРНОВИК
+  INVALID_SECURITY_TOKEN_TEXT: "Обновите страницу с помощь <b>F5</b> и попробуйте снова"
+  INVALID_SECURITY_TOKEN_TITLE: "Неверный токен безопасности"
+  NOT_YET_MANAGED: еще не удалось!
+  SINGLE_OR_BRANCH_EXPORT: Экспорт одного документа или ветки
+  WAIT_FOR_FUTURE_UPDATES: Ждите будущих обновлений.
+  YOUR_DOCUMENT_IS_READY_FOR: Ваш документ готов для...
+
+  APPROPRIATE_LIBRARY: или другую подходящую библиотеку для вашего сервера.
+  NOT_INSTALLED: не установлено
+  MOVE_AND_RUN: 'Перейти к %1 и выполнить'
+
+  # END PHP FILES
+
+
+
+  PREFACE_IMAGE: Статус изображения
+  PREFACE_IMAGE_HELP: Отображает первое изображение страницы. Полезно, если не включено на той же странице.
+  CROPZOOM_WIDTH: Ширина изображения
+  CROPZOOM_WIDTH_HELP: cropResize изменяет размер изображения до меньшего или большего размера в зависимости от ширины и высоты.
+  CROPZOOM_HEIGHT: Высота изображения
+  CROPZOOM_HEIGHT_HELP: cropResize изменяет размер изображения до меньшего или большего размера в зависимости от ширины и высоты.
+
+  EXPORT_BUTTON: Экспорт
+  ENTIRE_SITE_EXPORT: Экспортировать весь сайт
+  THIS_PAGE_EXPORT: Экспортировать эту страницу

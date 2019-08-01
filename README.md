@@ -52,6 +52,8 @@ However it is useful to know that the simplest way to install the libraries from
 
 # Usage
 
+## Exporting site pages
+
 For now the `snappygrav` plugin as been tested for three types of sites:
 
 * [Blog Site](https://github.com/getgrav/grav-skeleton-blog-site) skeleton with [Quark](https://github.com/getgrav/grav-theme-quark) theme by [Grav Team](https://getgrav.org/about)
@@ -65,7 +67,7 @@ For now the `snappygrav` plugin as been tested for three types of sites:
 
 The `snappygrav` plugin to include images requires a `true` value for the `Absolute URLs` in the `/your/site/grav/user/config/system.yaml` file. If you are using `Admin` plugin select the following links: `Configuration`, `System`, `Yes` for `Absolute URLs` and save.
 
-## Single document or Branch
+### Single document or Branch
 
 The `snappygrav` plugin must be included into your theme, where you want to display the PDF text or icon, as follows:
 
@@ -77,7 +79,7 @@ I've tried this string for:
 * `RTFM Site` in `partials/github_link.html.twig`
 * `Knowledge Base` in `item.html.twig`
 
-## Complete PDF
+### Complete PDF
 
 You can print your all site as a PDF with:
 
@@ -90,6 +92,37 @@ I've tried this string for:
 * `Blog Site` in `partials/sidebar.html.twig` (both Quark and Antimatter)
 * `RTFM Site` in `partials/sidebar.html.twig`
 * `Knowledge Base` in `partials/sidebar.html.twig`
+
+## Exporting formatted form data
+
+This plugin defines a new form action 'save_pdf'. Use it with the [Form plugin](https://github.com/getgrav/grav-plugin-form) to save a PDF copy of the user's form data.
+
+You can define the template as print-friendly HTML using a Twig template, just as you can when you export pages with this plugin.
+
+### Form action parameters
+
+The parameters `fileprefix`, `filepostfix`, `dateformat`, `dateraw`, `filename`, and `body` are available and function identically to the form plugin's bundled ['save' action](https://learn.getgrav.org/16/forms/forms/reference-form-actions#save) parameters.
+
+Just like the 'save' action, if you omit the `body` parameter, your output will be formatted using the 'forms/data.html.twig' template from your theme, Form plugin, or other location in your Twig path.
+
+`operation` is ignored, as new PDF documents are always _created_.
+
+`extension` is hardcoded to "pdf", no point changing it.
+
+### Example
+
+```yaml
+    …
+    process:
+        …
+        - save_pdf:
+            fileprefix: referral-
+            dateformat: Ymd-His
+            body: "{% include 'forms/referral-print.html.twig' %}"
+        …
+```
+
+
 
 ## Settings Defaults
 

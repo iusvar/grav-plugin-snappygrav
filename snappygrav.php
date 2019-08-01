@@ -4,12 +4,13 @@ namespace Grav\Plugin;
 use Grav\Common\Plugin;
 use Grav\Common\Utils;
 use Grav\Plugin\SnappyManager;
-
+use RocketTheme\Toolbox\Event\Event;
+use RocketTheme\Toolbox\File\File;
 
 class SnappyGravPlugin extends Plugin
 {
     protected $lang;
-    
+
     protected $route = "snappy-manager";
     protected $uri;
     protected $base;
@@ -35,7 +36,7 @@ class SnappyGravPlugin extends Plugin
         set_time_limit($set_time_limit);
 
         require_once __DIR__ . '/classes/snappymanager.php';
-        
+
         $this->lang = $this->grav['language'];
         $this->uri = $this->grav['uri'];
     }
@@ -56,12 +57,79 @@ class SnappyGravPlugin extends Plugin
             'onTwigInitialized'     => ['onTwigInitialized', 0],
             'onPageInitialized'     => ['onPageInitialized', 1001],
             'onTwigSiteVariables'   => ['onTwigSiteVariables', 0],
-            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0]
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onFormProcessed' => ['customFormActions', 0],
         ]);
 
         $this->snappymanager = new SnappyManager($this->grav);
         $this->snappymanager->json_response = [];
         $this->grav['snappymanager'] = $this->snappymanager;
+    }
+
+    /**
+     * [customFormActions] Add custom form processing action 'save_pdf'
+     *
+     * @param Event $event
+     */
+    public function customFormActions(Event $event)
+    {
+        $action = $event['action'];
+
+        // saveFormPDF custom action
+        switch ($action) {
+            case 'save_pdf':
+                $this->saveFormPDF($event);
+                break;
+        }
+    }
+
+    /**
+     * @param Event $event
+     */
+    protected function saveFormPDF(Event $event) {
+        $form = $event['form'];
+        $params = $event['params'];
+
+        $prefix = array_key_exists('fileprefix', $params) ? $params['fileprefix'] : '';
+        $format = array_key_exists('dateformat', $params) ? $params['dateformat'] : 'Ymd-His-u';
+        $raw_format = (bool)( array_key_exists('dateraw', $params) ? $params['dateraw'] : false );
+        $postfix = array_key_exists('filepostfix', $params) ? $params['filepostfix'] : '';
+        $ext = '.pdf';
+        $filename = array_key_exists('filename', $params) ? $params['filename'] : '';
+
+        if ($raw_format) {
+            $datestamp = date($format);
+        }
+        else {
+            $utimestamp = microtime(true);
+            $timestamp = floor($utimestamp);
+            $milliseconds = round(($utimestamp - $timestamp) * 1000000);
+            $datestamp = date(preg_replace('`(?<!\\\\)u`', \sprintf('%06d', $milliseconds), $format), $timestamp);
+        }
+
+        if (!$filename) {
+            $filename = $prefix . $datestamp . $postfix . $ext;
+        }
+
+        $twig = $this->grav['twig'];
+        $vars = [
+            'form' => $form,
+            ];
+        $twig->itemData = $form->getData();
+        $filename = $twig->processString($filename, $vars);
+        $locator = $this->grav['locator'];
+        $path = $locator->findResource('user://data', TRUE);
+        $dir = $path . DS . $form->name();
+        $fullFileName = $dir. DS . $filename;
+
+        $html = $twig->processString(array_key_exists('body', $params) ? $params['body'] : '{% include "forms/data.html.twig" %}', $vars);
+        $metadata = $form->getValues()->toArray()['data'];
+
+        $snappy = new SnappyManager($this->grav);
+        $pdf = $snappy->servePDF([$html], $metadata);
+
+        $file = File::instance($fullFileName);
+        $file->save($pdf);
     }
 
     /*public function onOutputGenerated()
@@ -156,7 +224,7 @@ class SnappyGravPlugin extends Plugin
 
         $nonce = Utils::getNonce('snappy-form');
         $snappy_nonce = 'snappy-nonce:'.$nonce;
-        
+
         $branch = $this->config->get('plugins.snappygrav.branch_enabled');
         $theme = $this->config->get('plugins.snappygrav.theme');
 
@@ -191,7 +259,7 @@ class SnappyGravPlugin extends Plugin
 
         $export_button_text = $this->lang->translate('PLUGIN_SNAPPYGRAV.EXPORT_BUTTON');
         $space = ( !empty($export_button_icon) && !empty($export_button_text) ? '&nbsp;' : '' );
-        
+
         $btn_export_text    = $this->lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_EXPORT_TEXT');
         $btn_export_color   = $this->config->get('plugins.snappygrav.btn_export_color');
         $btn_cancel_text    = $this->lang->translate('PLUGIN_SNAPPYGRAV.BUTTON_CANCEL_TEXT');
@@ -204,7 +272,7 @@ class SnappyGravPlugin extends Plugin
             <script>
 
                 $(document).ready(function() {
-                    
+
                     $("#'.$button_id.'").on("click", function () {
                         var jc = $.confirm({
                             theme: "'.$theme.'",
@@ -323,7 +391,7 @@ class SnappyGravPlugin extends Plugin
                             }
                         });
                     });
-                        
+
                 });
             </script>
             ';

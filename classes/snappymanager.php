@@ -67,7 +67,7 @@ class SnappyManager
       $grav = Grav::instance();
       $lang = $grav['language'];
       $uri = $grav['uri'];
-      
+
       if (method_exists('Grav\Common\Utils', 'getNonce')) {
         if (strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
           if (isset($this->post['snappy-nonce'])) {
@@ -189,7 +189,7 @@ class SnappyManager
         $return_value = $this->makeDocument($export_route, $export_branch);
         $encoded_pdf = $return_value['encoded_pdf'];
         $filename = $return_value['filename'];
-        
+
       } catch (\Exception $e) {
         $this->json_response = [
           'status'    => 'error',
@@ -227,17 +227,17 @@ class SnappyManager
       $html = [];
       $temp_html = '';
       $filename = 'completepdf';
-      
+
       $metadata['author']   = $config->get('site.author.name', $_SERVER['SERVER_NAME']);
       $metadata['title']    = 'Title';
       $metadata['subject']  = $config->get('site.metadata.description', $_SERVER['SERVER_NAME']);
       $metadata['keywords'] = 'Keywords';
       $metadata['creator']  = $config->get('site.title', $_SERVER['SERVER_NAME']);
-      
+
       // complete
       if( empty($route) ) {
         $temp_html = $twig->processTemplate('complete.html.twig', ['page' => $page]);
-        
+
       // single or branch
       } else {
         $found = $page->find( $route );
@@ -269,7 +269,7 @@ class SnappyManager
     {
       $grav = Grav::instance();
       $pages = $grav['pages'];
-      
+
       $current = $page;
       $hierarchy = array();
       while ($current && !$current->root()) {
@@ -295,7 +295,7 @@ class SnappyManager
       $grav = Grav::instance();
       $config = $grav['config'];
       $lang = $grav['language'];
-      
+
       $pdf_option = [];
       $pdf_option['bottom'] = $config->get('plugins.snappygrav.margin_bottom') ?: 10;
       $pdf_option['left'] = $config->get('plugins.snappygrav.margin_left') ?: 10;
@@ -307,10 +307,12 @@ class SnappyManager
       $pdf_option['showwatermarktext'] = $config->get('plugins.snappygrav.showwatermarktext') ?: false;
       $pdf_option['setwatermarktext'] = $config->get('plugins.snappygrav.setwatermarktext') ?: $lang->translate('PLUGIN_SNAPPYGRAV.DRAFT');
       $pdf_option['watermarktextalpha'] = $config->get('plugins.snappygrav.watermarktextalpha') ?: 0.2;
+      $pdf_option['showwatermarkimage'] = $config->get('plugins.snappygrav.showwatermarkimage') ?: false;
+      $pdf_option['watermarkimgbehind'] = $config->get('plugins.snappygrav.watermarkimgbehind') ?: false;
 
       return $pdf_option;
     }
-    
+
 
     public function servePDF( $html, $metadata )
     {
@@ -332,26 +334,34 @@ class SnappyManager
       }
       return $pdf;
     }
-    
+
 
     public function engineMPDF( $html, $metadata )
     {
       $pdf_option = static::getOption();
-      
+
       $encoding = $pdf_option['encoding'];
       $format = $pdf_option['page_size'];
       $orientation = substr(strtoupper($pdf_option['orientation']),0,1);
-      
+
       $mpdf = new \Mpdf\Mpdf(['mode' => $encoding, 'format' => $format,'orientation' => $orientation]);
-      
+
       $mpdf->SetMargins( $pdf_option['left'],$pdf_option['right'],$pdf_option['top'],$pdf_option['bottom'] );
+
+      if( $pdf_option['showwatermarkimage'] ) {
+        $mpdf->showWatermarkImage = true;
+        $mpdf->watermarkImgBehind = $pdf_option['watermarkimgbehind'];
+        // NB. other image watermark options can be specified using mPDF's custom HTML element <watermarkimage>, see https://mpdf.github.io/reference/html-control-tags/watermarkimage.html
+      }
 
       if( $pdf_option['showwatermarktext'] ){
         $mpdf->showWatermarkText = true;
         $mpdf->SetWatermarkText( $pdf_option['setwatermarktext'] );
         $mpdf->watermarkTextAlpha = $pdf_option['watermarktextalpha'];
       }
-      
+
+
+
       if(!empty($metadata)){
         $mpdf->SetTitle( isset($metadata['title']) ? $metadata['title'] : 'set title' );
         $mpdf->SetCreator( isset($metadata['creator']) ? $metadata['creator'] : 'set creator' );
@@ -363,7 +373,7 @@ class SnappyManager
       $output = implode('',$html);
       $mpdf->WriteHTML($output);
       $pdf = $mpdf->Output(null,'S'); // [I]nline, [D]ownload, [F]ile, [S]tring_return
-      
+
       return $pdf;
     }
 
@@ -372,7 +382,7 @@ class SnappyManager
     {
       $grav = Grav::instance();
       $config = $grav['config'];
-      
+
       $pdf_option = static::getOption();
       $orientation = substr(strtoupper($pdf_option['orientation']),0,1);
 /*
@@ -427,8 +437,8 @@ class SnappyManager
       $output = implode('',$html);
       $tcpdf->writeHTML($output, true, false, true, false, '');
 
-      $pdf = $tcpdf->Output('', 'S'); //[I]nline, [D]ownload, [F]ile, [S]tring, [FI], [FD], [E]ncoding base64 
-      
+      $pdf = $tcpdf->Output('', 'S'); //[I]nline, [D]ownload, [F]ile, [S]tring, [FI], [FD], [E]ncoding base64
+
       return $pdf;
     }
 
@@ -437,9 +447,9 @@ class SnappyManager
     {
       $grav = Grav::instance();
       $config = $grav['config'];
-      
+
       $pdf_option = static::getOption();
-      
+
       // Placement/Path of the wkhtmltopdf program
       $wk_position = $config->get('plugins.snappygrav.wk_position');
       $wk_path = $config->get('plugins.snappygrav.wk_path');
@@ -466,11 +476,11 @@ class SnappyManager
       }
 
       $wkpdf = new \Knp\Snappy\Pdf( $wk_path );
-      
+
       if(!empty($metadata)){
         $wkpdf->setOption('title', isset($metadata['title']) ? $metadata['title'] : 'title' );
       }
-      
+
       $wkpdf->setOption('margin-left', $pdf_option['left'] );
       $wkpdf->setOption('margin-top', $pdf_option['top'] );
       $wkpdf->setOption('margin-right', $pdf_option['right'] );
@@ -484,7 +494,7 @@ class SnappyManager
 
       $toc = $config->get('plugins.snappygrav.toc');
       if($toc) $wkpdf->setOption('toc', true);
-      
+
       $zoom = $config->get('plugins.snappygrav.zoom');
       if($zoom) $wkpdf->setOption('zoom', $zoom);
 
@@ -496,7 +506,7 @@ class SnappyManager
       }
 
       $pdf = $wkpdf->getOutputFromHtml($html);
-      
+
       return $pdf;
     }
 }

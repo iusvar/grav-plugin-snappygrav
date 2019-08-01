@@ -38,12 +38,14 @@ preface_image: false
 preface_title: true             # When true prints title (default = false)
 print_media_type: true          # When true, it uses print-media-type option, otherwise it uses no-print-media-type option (default true)
 set_time_limit: 60              # Limits the maximum execution time
+showwatermarkimage: false       # supported for mPDF only: https://mpdf.github.io/reference/mpdf-variables/showwatermarktext.html
 showwatermarktext: false
 tcpdf_setprintfooter: false
 tcpdf_setprintheader: false
 theme: light                    # jQuery Confirm v3: theme
 title: true                     # I prefer True or False, getting title from site page
 toc: false
+watermarkimgbehind: false       # supported for mPDF only: https://mpdf.github.io/reference/mpdf-variables/watermarkimgbehind.html
 wk_path: ''                     # Path of the wkhtmltopdf program
 wk_position: plugin             # The options are: data, plugin, os (default: plugin)
 zoom: 1                         # Use this zoom factor (default 1) <float>

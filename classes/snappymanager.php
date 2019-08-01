@@ -398,13 +398,13 @@ class SnappyManager
       $tcpdf->SetPrintHeader( $tcpdf_setprintheader );
       $tcpdf->SetPrintFooter( $tcpdf_setprintfooter );
 
-      if(!empty($metadata)){
-        $tcpdf->SetTitle( isset($metadata['title']) ? $metadata['title'] : 'title' );
-        $tcpdf->SetCreator( isset($metadata['creator']) ? $metadata['creator'] : 'creator' );
-        $tcpdf->SetAuthor( isset($metadata['author']) ? $metadata['author'] : 'author' );
-        $tcpdf->SetSubject( isset($metadata['subject']) ? $metadata['subject'] : 'subject' );
-        $tcpdf->SetKeywords( isset($metadata['keywords']) ? $metadata['keywords'] : 'keywords' );
+      foreach ($metadata as $k => $v) {
+        $method = 'Set' . ucfirst($k); // ->SetTitle() etc
+        if (method_exists($tcpdf, $method)) {
+          $tcpdf->{$method}($v);
+        }
       }
+
 /*
       $tcpdf->setJPEGQuality(75);
       $tcpdf->setFooterData(array(0,64,0), array(0,64,128));
